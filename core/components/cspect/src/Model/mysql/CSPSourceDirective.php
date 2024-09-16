@@ -3,33 +3,26 @@ namespace CSPect\Model\mysql;
 
 use xPDO\xPDO;
 
-class CSPSource extends \CSPect\Model\CSPSource
+class CSPSourceDirective extends \CSPect\Model\CSPSourceDirective
 {
 
     public static $metaMap = array (
         'package' => 'CSPect\\Model\\',
         'version' => '3.0',
-        'table' => 'cspect_source',
+        'table' => 'cspect_source_directive',
         'tableMeta' => 
         array (
             'engine' => 'InnoDB',
         ),
         'fields' => 
         array (
-            'name' => '',
-            'rank' => 0,
+            'host' => 0,
+            'source' => 0,
+            'value' => NULL,
         ),
         'fieldMeta' => 
         array (
-            'name' => 
-            array (
-                'dbtype' => 'varchar',
-                'precision' => '127',
-                'phptype' => 'string',
-                'null' => false,
-                'default' => '',
-            ),
-            'rank' => 
+            'host' => 
             array (
                 'dbtype' => 'int',
                 'precision' => '10',
@@ -37,34 +30,48 @@ class CSPSource extends \CSPect\Model\CSPSource
                 'null' => false,
                 'default' => 0,
             ),
+            'source' => 
+            array (
+                'dbtype' => 'int',
+                'precision' => '10',
+                'phptype' => 'integer',
+                'null' => false,
+                'default' => 0,
+            ),
+            'value' => 
+            array (
+                'dbtype' => 'text',
+                'phptype' => 'string',
+                'null' => true,
+            ),
         ),
         'indexes' => 
         array (
-            'name' => 
+            'host' => 
             array (
-                'alias' => 'name',
-                'primary' => false,
-                'unique' => true,
-                'type' => 'BTREE',
-                'columns' => 
-                array (
-                    'name' => 
-                    array (
-                        'length' => '',
-                        'collation' => 'A',
-                        'null' => false,
-                    ),
-                ),
-            ),
-            'rank' => 
-            array (
-                'alias' => 'rank',
+                'alias' => 'host',
                 'primary' => false,
                 'unique' => false,
                 'type' => 'BTREE',
                 'columns' => 
                 array (
-                    'rank' => 
+                    'host' => 
+                    array (
+                        'length' => '',
+                        'collation' => 'A',
+                        'null' => false,
+                    ),
+                ),
+            ),
+            'source' => 
+            array (
+                'alias' => 'source',
+                'primary' => false,
+                'unique' => false,
+                'type' => 'BTREE',
+                'columns' => 
+                array (
+                    'source' => 
                     array (
                         'length' => '',
                         'collation' => 'A',
@@ -73,23 +80,23 @@ class CSPSource extends \CSPect\Model\CSPSource
                 ),
             ),
         ),
-        'aggregates' => 
+        'composites' => 
         array (
-            'Sources' => 
+            'Host' => 
             array (
-                'class' => 'CSPect\\Model\\CSPSourceDirective',
-                'local' => 'id',
-                'foreign' => 'host',
-                'cardinality' => 'many',
-                'owner' => 'local',
+                'class' => 'CSPect\\Model\\CSPSource',
+                'local' => 'host',
+                'foreign' => 'id',
+                'cardinality' => 'one',
+                'owner' => 'foreign',
             ),
-            'Contexts' => 
+            'Source' => 
             array (
-                'class' => 'CSPect\\Model\\CSPSourceContext',
-                'local' => 'id',
-                'foreign' => 'host',
-                'cardinality' => 'many',
-                'owner' => 'local',
+                'class' => 'CSPect\\Model\\CSPDirective',
+                'local' => 'source',
+                'foreign' => 'id',
+                'cardinality' => 'one',
+                'owner' => 'foreign',
             ),
         ),
     );

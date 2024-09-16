@@ -9,7 +9,7 @@ class CSPDirective extends \CSPect\Model\CSPDirective
     public static $metaMap = array (
         'package' => 'CSPect\\Model\\',
         'version' => '3.0',
-        'table' => 'cspect_source',
+        'table' => 'cspect_directive',
         'tableMeta' => 
         array (
             'engine' => 'InnoDB',

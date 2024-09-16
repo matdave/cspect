@@ -22,6 +22,7 @@ class CSPViolation extends \CSPect\Model\CSPViolation
             'url' => NULL,
             'user_agent' => NULL,
             'body' => NULL,
+            'created_on' => 'CURRENT_TIMESTAMP',
         ),
         'fieldMeta' => 
         array (
@@ -67,6 +68,13 @@ class CSPViolation extends \CSPect\Model\CSPViolation
                 'phptype' => 'json',
                 'null' => true,
             ),
+            'created_on' => 
+            array (
+                'dbtype' => 'datetime',
+                'phptype' => 'datetime',
+                'null' => false,
+                'default' => 'CURRENT_TIMESTAMP',
+            ),
         ),
         'indexes' => 
         array (
@@ -111,6 +119,22 @@ class CSPViolation extends \CSPect\Model\CSPViolation
                 'columns' => 
                 array (
                     'age' => 
+                    array (
+                        'length' => '',
+                        'collation' => 'A',
+                        'null' => false,
+                    ),
+                ),
+            ),
+            'created_on' => 
+            array (
+                'alias' => 'created_on',
+                'primary' => false,
+                'unique' => false,
+                'type' => 'BTREE',
+                'columns' => 
+                array (
+                    'created_on' => 
                     array (
                         'length' => '',
                         'collation' => 'A',

@@ -9,7 +9,7 @@ class CSPSourceContext extends \CSPect\Model\CSPSourceContext
     public static $metaMap = array (
         'package' => 'CSPect\\Model\\',
         'version' => '3.0',
-        'table' => 'cspect_host_context',
+        'table' => 'cspect_source_context',
         'tableMeta' => 
         array (
             'engine' => 'InnoDB',

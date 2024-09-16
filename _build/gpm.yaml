@@ -11,10 +11,10 @@ menus:
         action: manage
 database:
     tables:
+        - CSPect\Model\CSPDirective
         - CSPect\Model\CSPSource
-        - CSPect\Model\CSPHost
-        - CSPect\Model\CSPHostSource
-        - CSPect\Model\CSPHostContext
+        - CSPect\Model\CSPSourceDirective
+        - CSPect\Model\CSPSourceContext
         - CSPect\Model\CSPViolation
 build:
     scriptsAfter:

@@ -15,10 +15,10 @@
   },
   "database":{
     "tables": [
+      "CSPDirective",
       "CSPSource",
-      "CSPHost",
-      "CSPHostSource",
-      "CSPHostContext",
+      "CSPSourceDirective",
+      "CSPSourceContext",
       "CSPViolation"
     ]
   }

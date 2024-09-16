@@ -10,11 +10,11 @@ require_once $namespace['path'] . 'vendor/autoload.php';
 if (!$modx->services->has('cspect')) {
     // Register base class in the service container
     $modx->services->add('cspect', function($c) use ($modx) {
-        return new \CspEct\CspEct($modx);
+        return new \CSPect\CSPect($modx);
     });
 
     // Load packages model, uncomment if you have DB tables
-    //$modx->addPackage('CspEct\Model', $namespace['path'] . 'src/', null, 'CspEct\\');
+    $modx->addPackage('CSPect\Model', $namespace['path'] . 'src/', null, 'CSPect\\');
 }
 
 // More about this file: https://docs.modx.com/3.x/en/extending-modx/namespaces#bootstrapping-services

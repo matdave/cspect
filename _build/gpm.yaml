@@ -1,10 +1,18 @@
-name: CspEct
+name: CSPect
 version: 0.0.1
 lowCaseName: cspect
-namespace: CspEct
+namespace: CSPect
 description: 'CSP management tool for MODX'
 author: matdave
 menus:
     -
         text: cspect.menu
+        description: cspect.menu_desc
         action: manage
+database:
+    tables:
+        - \\CSPect\\Model\\CSPSource
+        - \\CSPect\\Model\\CSPHost
+        - \\CSPect\\Model\\CSPHostSource
+        - \\CSPect\\Model\\CSPHostContext
+        - \\CSPect\\Model\\CSPViolation

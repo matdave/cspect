@@ -1,8 +1,8 @@
-var CspEct = function (config) {
+var CSPect = function (config) {
     config = config || {};
-    CspEct.superclass.constructor.call(this, config);
+    CSPect.superclass.constructor.call(this, config);
 };
-Ext.extend(CspEct, Ext.Component, {
+Ext.extend(CSPect, Ext.Component, {
 
     page: {},
     window: {},
@@ -14,5 +14,5 @@ Ext.extend(CspEct, Ext.Component, {
     config: {},
 
 });
-Ext.reg('cspect', CspEct);
-cspect = new CspEct();
+Ext.reg('cspect', CSPect);
+cspect = new CSPect();

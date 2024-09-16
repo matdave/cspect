@@ -1,6 +1,6 @@
 <?php
-abstract class CspEctBaseManagerController extends modExtraManagerController {
-    /** @var \CspEct\CspEct $cspect */
+abstract class CSPectBaseManagerController extends modExtraManagerController {
+    /** @var \CSPect\CSPect $cspect */
     public $cspect;
 
     public function initialize(): void

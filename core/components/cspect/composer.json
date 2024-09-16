@@ -1,7 +1,15 @@
 {
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
-      "CspEct\\": "src/"
+      "CSPect\\": "src/"
     }
+  },
+  "require-dev": {
+    "modx/revolution": "^3.0"
+  },
+  "require": {
+    "matdave/modxpackage": "dev-main"
   }
 }

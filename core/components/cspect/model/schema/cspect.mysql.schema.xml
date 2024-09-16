@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model package="CSPect\Model\" baseClass="xPDO\Om\xPDOSimpleObject" platform="mysql" defaultEngine="InnoDB" version="3.0">
+<model package="cspect" baseClass="xPDOSimpleObject" platform="mysql" defaultEngine="InnoDB" version="2.0">
     <object class="CSPSource" table="cspect_source">
         <field key="name" dbtype="varchar" precision="127" phptype="string" null="false" default=""/>
         <field key="description" dbtype="text" phptype="string" null="true"/>
@@ -13,7 +13,7 @@
             <column key="rank" length="" collation="A" null="false" />
         </index>
 
-        <aggregate alias="Hosts" class="CSPect\Model\CSPHostSource" local="id" foreign="source" cardinality="many" owner="local" />
+        <aggregate alias="Hosts" class="CSPHostSource" local="id" foreign="source" cardinality="many" owner="local" />
     </object>
     <object class="CSPHost" table="cspect_host">
         <field key="name" dbtype="varchar" precision="127" phptype="string" null="false" default=""/>
@@ -22,8 +22,8 @@
             <column key="name" length="" collation="A" null="false" />
         </index>
 
-        <aggregate alias="Sources" class="CSPect\Model\CSPHostSource" local="id" foreign="host" cardinality="many" owner="local" />
-        <aggregate alias="Contexts" class="CSPect\Model\CSPHostContext" local="id" foreign="host" cardinality="many" owner="local" />
+        <aggregate alias="Sources" class="CSPHostSource" local="id" foreign="host" cardinality="many" owner="local" />
+        <aggregate alias="Contexts" class="CSPHostContext" local="id" foreign="host" cardinality="many" owner="local" />
     </object>
     <object class="CSPHostSource" table="cspect_host_source">
         <field key="host" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
@@ -38,8 +38,8 @@
             <column key="source" length="" collation="A" null="false" />
         </index>
 
-        <composite alias="Host" class="CSPect\Model\CSPHost" local="host" foreign="id" cardinality="one" owner="foreign" />
-        <composite alias="Source" class="CSPect\Model\CSPSource" local="source" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="Host" class="CSPHost" local="host" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="Source" class="CSPSource" local="source" foreign="id" cardinality="one" owner="foreign" />
     </object>
     <object class="CSPHostContext" table="cspect_host_context">
         <field key="host" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
@@ -53,8 +53,8 @@
             <column key="context_key" length="" collation="A" null="false" />
         </index>
 
-        <composite alias="Host" class="CSPect\Model\CSPHost" local="host" foreign="id" cardinality="one" owner="foreign" />
-        <composite alias="Context" class="MODX\Revolution\modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />
+        <composite alias="Host" class="CSPHost" local="host" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="Context" class="modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />
     </object>
     <object class="CSPViolation" table="cspect_violation">
         <field key="context_key" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
@@ -76,6 +76,6 @@
             <column key="age" length="" collation="A" null="false" />
         </index>
 
-        <composite alias="Context" class="MODX\Revolution\modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />
+        <composite alias="Context" class="modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />
     </object>
 </model>

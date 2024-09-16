@@ -1,7 +1,7 @@
 <?php
 require_once dirname(dirname(__FILE__)) . '/index.class.php';
 
-class CspEctManageManagerController extends CspEctBaseManagerController
+class CSPectManageManagerController extends CSPectBaseManagerController
 {
 
     public function process(array $scriptProperties = []): void

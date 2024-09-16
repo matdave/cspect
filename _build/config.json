@@ -1,0 +1,25 @@
+{
+  "name": "CSPect",
+  "version": "0.0.1",
+  "lowCaseName": "cspect",
+  "description": "CSP management tool for MODX",
+  "author": "matdave",
+  "package": {
+    "menus": [
+      {
+          "text": "cspect.menu",
+          "description": "cspect.menu_desc",
+          "action": "manage"
+      }
+    ]
+  },
+  "database":{
+    "tables": [
+      "CSPSource",
+      "CSPHost",
+      "CSPHostSource",
+      "CSPHostContext",
+      "CSPViolation"
+    ]
+  }
+}

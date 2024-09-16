@@ -1,7 +1,7 @@
 <?php
 
 use MODX\Revolution\modX;
-use CSPect\Model\CSPDirective;
+use CSPect\Model\CSPSource;
 
 return new class() {
     protected modX $modx;
@@ -19,26 +19,26 @@ return new class() {
 
     private function run(): void
     {
-        $sources = [
-            'default-src',
-            'font-src',
-            'img-src',
-            'script-src',
-            'style-src',
+        $hosts = [
+            'self',
+            'unsafe-inline',
+            'unsafe-eval',
+            'data:',
+            'blob:',
         ];
         $rank = 0;
-        foreach ($sources as $source) {
-            $this->createSource($source, $rank);
+        foreach ($hosts as $host) {
+            $this->createHost($host, $rank);
             $rank++;
         }
     }
 
-    private function createSource($source, $rank): void
+    private function createHost($host, $rank): void
     {
-        $obj = $this->modx->getObject(CSPDirective::class, ['name' => $source]);
+        $obj = $this->modx->getObject(CSPSource::class, ['name' => $host]);
         if (!$obj) {
-            $obj = $this->modx->newObject(CSPDirective::class);
-            $obj->set('name', $source);
+            $obj = $this->modx->newObject(CSPSource::class);
+            $obj->set('name', $host);
             $obj->set('rank', $rank);
             $obj->save();
         }

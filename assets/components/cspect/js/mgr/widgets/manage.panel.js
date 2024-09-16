@@ -21,12 +21,24 @@ cspect.panel.Manage = function (config) {
                 hideMode: 'offsets',
                 items: [
                     {
-                        title: _('cspect.manage.page_title'),
+                        title: _('cspect.manage.directive'),
                         layout: 'form',
                         items: [
                             {
+                                xtype: 'cspect-grid-directive',
                                 cls: 'main-wrapper',
-                               html: 'Greetings from John. Thank you for using GPM.'
+                                preventRender: true
+                            }
+                        ]
+                    },
+                    {
+                        title: _('cspect.manage.source'),
+                        layout: 'form',
+                        items: [
+                            {
+                                xtype: 'cspect-grid-source',
+                                cls: 'main-wrapper',
+                                preventRender: true
                             }
                         ]
                     }

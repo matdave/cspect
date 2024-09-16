@@ -4,7 +4,14 @@ $_lang['cspect.menu'] = 'CSPect';
 $_lang['cspect.menu_desc'] = 'Manage your CSP';
 $_lang['cspect.manage.page_title'] = 'CSPect';
 
+$_lang['cspect.manage.directive'] = 'Directives';
+$_lang['cspect.manage.directive_desc'] = 'Manage your CSP directives';
+$_lang['cspect.manage.source'] = 'Sources';
+$_lang['cspect.manage.source_desc'] = 'Manage your CSP sources';
+
 $_lang['cspect.directive'] = 'Directive';
+$_lang['cspect.directive_create'] = 'Create Directive';
+$_lang['cspect.directive_update'] = 'Update Directive';
 $_lang['cspect.directive.child-src'] = 'Child Source';
 $_lang['cspect.directive_desc.child-src'] = 'Allows the developer to control nested browsing contexts and worker execution contexts.';
 $_lang['cspect.directive.connect-src'] = 'Connect Source';
@@ -38,5 +45,4 @@ $_lang['cspect.directive_desc.style-src-attr'] = 'Specifies which URLs can be lo
 $_lang['cspect.directive.style-src-elem'] = 'Style Source Element';
 $_lang['cspect.directive_desc.style-src-elem'] = 'Specifies which URLs can be loaded as a stylesheet for inline style elements.';
 
-
-$_lang['cspect.host'] = 'Host';
+$_lang['cspect.source'] = 'Source';

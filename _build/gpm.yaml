@@ -19,5 +19,5 @@ database:
 build:
     scriptsAfter:
         - lit.gpm.php
+        - directives.gpm.php
         - sources.gpm.php
-        - hosts.gpm.php

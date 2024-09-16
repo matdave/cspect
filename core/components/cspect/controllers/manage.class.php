@@ -15,6 +15,10 @@ class CSPectManageManagerController extends CSPectBaseManagerController
 
     public function loadCustomCssJs(): void
     {
+        $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/directive/grid.js');
+        $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/directive/window.js');
+        $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/source/grid.js');
+        $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/source/window.js');
         $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/manage.panel.js');
         $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/sections/manage.js');
 

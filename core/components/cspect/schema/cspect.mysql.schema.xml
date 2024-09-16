@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model package="CSPect\Model\" baseClass="xPDO\Om\xPDOSimpleObject" platform="mysql" defaultEngine="InnoDB" version="3.0">
-    <object class="CSPSource" table="cspect_source">
+    <object class="CSPDirective" table="cspect_source">
         <field key="name" dbtype="varchar" precision="127" phptype="string" null="false" default=""/>
         <field key="description" dbtype="text" phptype="string" null="true"/>
         <field key="rank" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
@@ -13,19 +13,24 @@
             <column key="rank" length="" collation="A" null="false" />
         </index>
 
-        <aggregate alias="Hosts" class="CSPect\Model\CSPHostSource" local="id" foreign="source" cardinality="many" owner="local" />
+        <aggregate alias="Hosts" class="CSPect\Model\CSPSourceDirective" local="id" foreign="source" cardinality="many" owner="local" />
     </object>
-    <object class="CSPHost" table="cspect_host">
+    <object class="CSPSource" table="cspect_host">
         <field key="name" dbtype="varchar" precision="127" phptype="string" null="false" default=""/>
+        <field key="rank" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
 
         <index alias="name" name="name"  primary="false" unique="true" type="BTREE">
             <column key="name" length="" collation="A" null="false" />
         </index>
 
-        <aggregate alias="Sources" class="CSPect\Model\CSPHostSource" local="id" foreign="host" cardinality="many" owner="local" />
-        <aggregate alias="Contexts" class="CSPect\Model\CSPHostContext" local="id" foreign="host" cardinality="many" owner="local" />
+        <index alias="rank" name="rank" primary="false" unique="false" type="BTREE">
+            <column key="rank" length="" collation="A" null="false" />
+        </index>
+
+        <aggregate alias="Sources" class="CSPect\Model\CSPSourceDirective" local="id" foreign="host" cardinality="many" owner="local" />
+        <aggregate alias="Contexts" class="CSPect\Model\CSPSourceContext" local="id" foreign="host" cardinality="many" owner="local" />
     </object>
-    <object class="CSPHostSource" table="cspect_host_source">
+    <object class="CSPSourceDirective" table="cspect_host_source">
         <field key="host" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
         <field key="source" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
         <field key="value" dbtype="text" phptype="string" null="true"/>
@@ -38,10 +43,10 @@
             <column key="source" length="" collation="A" null="false" />
         </index>
 
-        <composite alias="Host" class="CSPect\Model\CSPHost" local="host" foreign="id" cardinality="one" owner="foreign" />
-        <composite alias="Source" class="CSPect\Model\CSPSource" local="source" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="Host" class="CSPect\Model\CSPSource" local="host" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="Source" class="CSPect\Model\CSPDirective" local="source" foreign="id" cardinality="one" owner="foreign" />
     </object>
-    <object class="CSPHostContext" table="cspect_host_context">
+    <object class="CSPSourceContext" table="cspect_host_context">
         <field key="host" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
         <field key="context_key" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
 
@@ -53,7 +58,7 @@
             <column key="context_key" length="" collation="A" null="false" />
         </index>
 
-        <composite alias="Host" class="CSPect\Model\CSPHost" local="host" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="Host" class="CSPect\Model\CSPSource" local="host" foreign="id" cardinality="one" owner="foreign" />
         <composite alias="Context" class="MODX\Revolution\modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />
     </object>
     <object class="CSPViolation" table="cspect_violation">

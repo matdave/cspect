@@ -9,7 +9,7 @@ class CSPSource extends \CSPect\Model\CSPSource
     public static $metaMap = array (
         'package' => 'CSPect\\Model\\',
         'version' => '3.0',
-        'table' => 'cspect_source',
+        'table' => 'cspect_host',
         'tableMeta' => 
         array (
             'engine' => 'InnoDB',
@@ -17,8 +17,6 @@ class CSPSource extends \CSPect\Model\CSPSource
         'fields' => 
         array (
             'name' => '',
-            'description' => NULL,
-            'rank' => 0,
         ),
         'fieldMeta' => 
         array (
@@ -29,20 +27,6 @@ class CSPSource extends \CSPect\Model\CSPSource
                 'phptype' => 'string',
                 'null' => false,
                 'default' => '',
-            ),
-            'description' => 
-            array (
-                'dbtype' => 'text',
-                'phptype' => 'string',
-                'null' => true,
-            ),
-            'rank' => 
-            array (
-                'dbtype' => 'int',
-                'precision' => '10',
-                'phptype' => 'integer',
-                'null' => false,
-                'default' => 0,
             ),
         ),
         'indexes' => 
@@ -63,30 +47,22 @@ class CSPSource extends \CSPect\Model\CSPSource
                     ),
                 ),
             ),
-            'rank' => 
-            array (
-                'alias' => 'rank',
-                'primary' => false,
-                'unique' => false,
-                'type' => 'BTREE',
-                'columns' => 
-                array (
-                    'rank' => 
-                    array (
-                        'length' => '',
-                        'collation' => 'A',
-                        'null' => false,
-                    ),
-                ),
-            ),
         ),
         'aggregates' => 
         array (
-            'Hosts' => 
+            'Sources' => 
             array (
-                'class' => 'CSPect\\Model\\CSPHostSource',
+                'class' => 'CSPect\\Model\\CSPSourceDirective',
                 'local' => 'id',
-                'foreign' => 'source',
+                'foreign' => 'host',
+                'cardinality' => 'many',
+                'owner' => 'local',
+            ),
+            'Contexts' => 
+            array (
+                'class' => 'CSPect\\Model\\CSPSourceContext',
+                'local' => 'id',
+                'foreign' => 'host',
                 'cardinality' => 'many',
                 'owner' => 'local',
             ),

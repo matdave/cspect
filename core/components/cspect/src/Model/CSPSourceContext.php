@@ -4,16 +4,16 @@ namespace CSPect\Model;
 use xPDO\xPDO;
 
 /**
- * Class CSPHostContext
+ * Class CSPSourceContext
  *
  * @property integer $host
  * @property string $context_key
  *
- * @property \CSPect\Model\CSPHost $Host
+ * @property \CSPect\Model\CSPSource $Host
  * @property \MODX\Revolution\modContext $Context
  *
  * @package CSPect\Model
  */
-class CSPHostContext extends \xPDO\Om\xPDOSimpleObject
+class CSPSourceContext extends \xPDO\Om\xPDOSimpleObject
 {
 }

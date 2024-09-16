@@ -3,13 +3,13 @@ namespace CSPect\Model\mysql;
 
 use xPDO\xPDO;
 
-class CSPHost extends \CSPect\Model\CSPHost
+class CSPDirective extends \CSPect\Model\CSPDirective
 {
 
     public static $metaMap = array (
         'package' => 'CSPect\\Model\\',
         'version' => '3.0',
-        'table' => 'cspect_host',
+        'table' => 'cspect_source',
         'tableMeta' => 
         array (
             'engine' => 'InnoDB',
@@ -17,6 +17,8 @@ class CSPHost extends \CSPect\Model\CSPHost
         'fields' => 
         array (
             'name' => '',
+            'description' => NULL,
+            'rank' => 0,
         ),
         'fieldMeta' => 
         array (
@@ -27,6 +29,20 @@ class CSPHost extends \CSPect\Model\CSPHost
                 'phptype' => 'string',
                 'null' => false,
                 'default' => '',
+            ),
+            'description' => 
+            array (
+                'dbtype' => 'text',
+                'phptype' => 'string',
+                'null' => true,
+            ),
+            'rank' => 
+            array (
+                'dbtype' => 'int',
+                'precision' => '10',
+                'phptype' => 'integer',
+                'null' => false,
+                'default' => 0,
             ),
         ),
         'indexes' => 
@@ -47,22 +63,30 @@ class CSPHost extends \CSPect\Model\CSPHost
                     ),
                 ),
             ),
+            'rank' => 
+            array (
+                'alias' => 'rank',
+                'primary' => false,
+                'unique' => false,
+                'type' => 'BTREE',
+                'columns' => 
+                array (
+                    'rank' => 
+                    array (
+                        'length' => '',
+                        'collation' => 'A',
+                        'null' => false,
+                    ),
+                ),
+            ),
         ),
         'aggregates' => 
         array (
-            'Sources' => 
+            'Hosts' => 
             array (
-                'class' => 'CSPect\\Model\\CSPHostSource',
+                'class' => 'CSPect\\Model\\CSPSourceDirective',
                 'local' => 'id',
-                'foreign' => 'host',
-                'cardinality' => 'many',
-                'owner' => 'local',
-            ),
-            'Contexts' => 
-            array (
-                'class' => 'CSPect\\Model\\CSPHostContext',
-                'local' => 'id',
-                'foreign' => 'host',
+                'foreign' => 'source',
                 'cardinality' => 'many',
                 'owner' => 'local',
             ),

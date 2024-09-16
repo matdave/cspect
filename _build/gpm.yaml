@@ -16,3 +16,8 @@ database:
         - CSPect\Model\CSPHostSource
         - CSPect\Model\CSPHostContext
         - CSPect\Model\CSPViolation
+build:
+    scriptsAfter:
+        - lit.gpm.php
+        - sources.gpm.php
+        - hosts.gpm.php

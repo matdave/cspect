@@ -7,8 +7,6 @@ use xPDO\xPDO;
  * Class CSPSource
  *
  * @property string $name
- * @property string $description
- * @property integer $rank
  *
  * @package CSPect\Model
  */

@@ -3,13 +3,13 @@ namespace CSPect\Model\mysql;
 
 use xPDO\xPDO;
 
-class CSPHostSource extends \CSPect\Model\CSPHostSource
+class CSPSourceContext extends \CSPect\Model\CSPSourceContext
 {
 
     public static $metaMap = array (
         'package' => 'CSPect\\Model\\',
         'version' => '3.0',
-        'table' => 'cspect_host_source',
+        'table' => 'cspect_host_context',
         'tableMeta' => 
         array (
             'engine' => 'InnoDB',
@@ -17,8 +17,7 @@ class CSPHostSource extends \CSPect\Model\CSPHostSource
         'fields' => 
         array (
             'host' => 0,
-            'source' => 0,
-            'value' => NULL,
+            'context_key' => '',
         ),
         'fieldMeta' => 
         array (
@@ -30,19 +29,13 @@ class CSPHostSource extends \CSPect\Model\CSPHostSource
                 'null' => false,
                 'default' => 0,
             ),
-            'source' => 
+            'context_key' => 
             array (
-                'dbtype' => 'int',
-                'precision' => '10',
-                'phptype' => 'integer',
-                'null' => false,
-                'default' => 0,
-            ),
-            'value' => 
-            array (
-                'dbtype' => 'text',
+                'dbtype' => 'varchar',
+                'precision' => '100',
                 'phptype' => 'string',
-                'null' => true,
+                'null' => false,
+                'default' => '',
             ),
         ),
         'indexes' => 
@@ -63,15 +56,15 @@ class CSPHostSource extends \CSPect\Model\CSPHostSource
                     ),
                 ),
             ),
-            'source' => 
+            'context_key' => 
             array (
-                'alias' => 'source',
+                'alias' => 'context_key',
                 'primary' => false,
                 'unique' => false,
                 'type' => 'BTREE',
                 'columns' => 
                 array (
-                    'source' => 
+                    'context_key' => 
                     array (
                         'length' => '',
                         'collation' => 'A',
@@ -84,17 +77,17 @@ class CSPHostSource extends \CSPect\Model\CSPHostSource
         array (
             'Host' => 
             array (
-                'class' => 'CSPect\\Model\\CSPHost',
+                'class' => 'CSPect\\Model\\CSPSource',
                 'local' => 'host',
                 'foreign' => 'id',
                 'cardinality' => 'one',
                 'owner' => 'foreign',
             ),
-            'Source' => 
+            'Context' => 
             array (
-                'class' => 'CSPect\\Model\\CSPSource',
-                'local' => 'source',
-                'foreign' => 'id',
+                'class' => 'MODX\\Revolution\\modContext',
+                'local' => 'context_key',
+                'foreign' => 'key',
                 'cardinality' => 'one',
                 'owner' => 'foreign',
             ),

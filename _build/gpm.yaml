@@ -1,0 +1,10 @@
+name: CspEct
+version: 0.0.1
+lowCaseName: cspect
+namespace: CspEct
+description: 'CSP management tool for MODX'
+author: matdave
+menus:
+    -
+        text: cspect.menu
+        action: manage

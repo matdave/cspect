@@ -68,6 +68,7 @@
         <field key="url" dbtype="text" phptype="string" null="true"/>
         <field key="user_agent" dbtype="text" phptype="string" null="true"/>
         <field key="body" dbtype="text" phptype="json" null="true"/>
+        <field key="created_on" dbtype="datetime" phptype="datetime" null="false" default="CURRENT_TIMESTAMP"/>
 
         <index alias="context_key" name="context_key"  primary="false" unique="false" type="BTREE">
             <column key="context_key" length="" collation="A" null="false" />
@@ -79,6 +80,10 @@
 
         <index alias="age" name="age"  primary="false" unique="false" type="BTREE">
             <column key="age" length="" collation="A" null="false" />
+        </index>
+
+        <index alias="created_on" name="created_on"  primary="false" unique="false" type="BTREE">
+            <column key="created_on" length="" collation="A" null="false" />
         </index>
 
         <composite alias="Context" class="MODX\Revolution\modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />

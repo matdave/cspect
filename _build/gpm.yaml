@@ -11,8 +11,8 @@ menus:
         action: manage
 database:
     tables:
-        - \\CSPect\\Model\\CSPSource
-        - \\CSPect\\Model\\CSPHost
-        - \\CSPect\\Model\\CSPHostSource
-        - \\CSPect\\Model\\CSPHostContext
-        - \\CSPect\\Model\\CSPViolation
+        - CSPect\Model\CSPSource
+        - CSPect\Model\CSPHost
+        - CSPect\Model\CSPHostSource
+        - CSPect\Model\CSPHostContext
+        - CSPect\Model\CSPViolation

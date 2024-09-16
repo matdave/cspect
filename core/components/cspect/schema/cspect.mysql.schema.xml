@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model package="CSPect\Model\" baseClass="xPDO\Om\xPDOSimpleObject" platform="mysql" defaultEngine="InnoDB" version="3.0">
-    <object class="CSPDirective" table="cspect_source">
+    <object class="CSPDirective" table="cspect_directive">
         <field key="name" dbtype="varchar" precision="127" phptype="string" null="false" default=""/>
         <field key="description" dbtype="text" phptype="string" null="true"/>
         <field key="rank" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
@@ -15,7 +15,7 @@
 
         <aggregate alias="Hosts" class="CSPect\Model\CSPSourceDirective" local="id" foreign="source" cardinality="many" owner="local" />
     </object>
-    <object class="CSPSource" table="cspect_host">
+    <object class="CSPSource" table="cspect_source">
         <field key="name" dbtype="varchar" precision="127" phptype="string" null="false" default=""/>
         <field key="rank" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
 
@@ -30,7 +30,7 @@
         <aggregate alias="Sources" class="CSPect\Model\CSPSourceDirective" local="id" foreign="host" cardinality="many" owner="local" />
         <aggregate alias="Contexts" class="CSPect\Model\CSPSourceContext" local="id" foreign="host" cardinality="many" owner="local" />
     </object>
-    <object class="CSPSourceDirective" table="cspect_host_source">
+    <object class="CSPSourceDirective" table="cspect_source_directive">
         <field key="host" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
         <field key="source" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
         <field key="value" dbtype="text" phptype="string" null="true"/>
@@ -46,7 +46,7 @@
         <composite alias="Host" class="CSPect\Model\CSPSource" local="host" foreign="id" cardinality="one" owner="foreign" />
         <composite alias="Source" class="CSPect\Model\CSPDirective" local="source" foreign="id" cardinality="one" owner="foreign" />
     </object>
-    <object class="CSPSourceContext" table="cspect_host_context">
+    <object class="CSPSourceContext" table="cspect_source_context">
         <field key="host" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
         <field key="context_key" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
 

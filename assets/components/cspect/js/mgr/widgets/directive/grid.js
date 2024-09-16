@@ -1,15 +1,16 @@
 cspect.grid.Directive = function (config) {
     config = config || {};
     Ext.applyIf(config, {
-        id: 'cspect-grid-directive',
         url: cspect.config.connectorUrl,
         baseParams: {
-            action: 'CSPect\\Processors\\Directives\\GetList'
+            action: 'CSPect\\Processors\\Directives\\GetList',
+            sort: 'rank',
+            dir: 'asc'
         },
         fields: ['id', 'name', 'description', 'rank'],
         columns: [
             {
-                header: _('cspect.directive_grid_name'),
+                header: _('cspect.global.name'),
                 dataIndex: 'name',
                 sortable: true,
                 width: 100,
@@ -18,7 +19,7 @@ cspect.grid.Directive = function (config) {
                 }
             },
             {
-                header: _('cspect.directive_grid_description'),
+                header: _('cspect.global.description'),
                 dataIndex: 'description',
                 sortable: true,
                 width: 100,
@@ -29,16 +30,10 @@ cspect.grid.Directive = function (config) {
                     return value;
                 }
             },
-            {
-                header: _('cspect.directive_grid_type'),
-                dataIndex: 'type',
-                sortable: true,
-                width: 100
-            },
         ],
         tbar: [
             {
-                text: _('cspect.directive_grid_create'),
+                text: _('cspect.directive_create'),
                 handler: this.createDirective
             }
         ],
@@ -46,14 +41,7 @@ cspect.grid.Directive = function (config) {
         paging: true,
         remoteSort: true,
         enableDragDrop: false,
-        selModel: new Ext.grid.RowSelectionModel({singleSelect: true}),
         autoExpandColumn: 'name',
-        listeners: {
-            'render': {fn: function (grid) {
-                var store = grid.getStore();
-                store.load();
-            }, scope: this}
-        }
     });
     cspect.grid.Directive.superclass.constructor.call(this, config);
 }

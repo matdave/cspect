@@ -1,24 +1,24 @@
 cspect.grid.Source = function (config) {
     config = config || {};
     Ext.applyIf(config, {
-        id: 'cspect-grid-source',
         url: cspect.config.connectorUrl,
-        baseParams: {action: 'CSPect\\Processors\\Sources\\GetList'},
+        baseParams: {
+            action: 'CSPect\\Processors\\Sources\\GetList',
+            sort: 'rank',
+            dir: 'asc'
+        },
         fields: ['id', 'name', 'rank'],
         columns: [
             {
-                header: _('cspect.source_grid_name'),
+                header: _('cspect.global.name'),
                 dataIndex: 'name',
                 sortable: true,
                 width: 100,
-                renderer: function (value, metaData, record, rowIndex, colIndex, store) {
-                    return _('cspect.source.' + record.data.name)
-                }
             },
         ],
         tbar: [
             {
-                text: _('cspect.source_grid_create'),
+                text: _('cspect.source_create'),
                 handler: this.createSource
             }
         ],
@@ -26,14 +26,7 @@ cspect.grid.Source = function (config) {
         paging: true,
         remoteSort: true,
         enableDragDrop: false,
-        selModel: new Ext.grid.RowSelectionModel({singleSelect: true}),
         autoExpandColumn: 'name',
-        listeners: {
-            'render': {fn: function (grid) {
-                var store = grid.getStore();
-                store.load();
-            }, scope: this}
-        }
     });
     cspect.grid.Source.superclass.constructor.call(this, config);
 }
@@ -51,3 +44,4 @@ Ext.extend(cspect.grid.Source, MODx.grid.Grid, {
         win.show();
     }
 });
+Ext.reg('cspect-grid-source', cspect.grid.Source);

@@ -9,6 +9,9 @@ $_lang['cspect.manage.directive_desc'] = 'Manage your CSP directives';
 $_lang['cspect.manage.source'] = 'Sources';
 $_lang['cspect.manage.source_desc'] = 'Manage your CSP sources';
 
+$_lang['cspect.global.name'] = 'Name';
+$_lang['cspect.global.description'] = 'Description';
+
 $_lang['cspect.directive'] = 'Directive';
 $_lang['cspect.directive_create'] = 'Create Directive';
 $_lang['cspect.directive_update'] = 'Update Directive';
@@ -46,3 +49,5 @@ $_lang['cspect.directive.style-src-elem'] = 'Style Source Element';
 $_lang['cspect.directive_desc.style-src-elem'] = 'Specifies which URLs can be loaded as a stylesheet for inline style elements.';
 
 $_lang['cspect.source'] = 'Source';
+$_lang['cspect.source_create'] = 'Create Source';
+$_lang['cspect.source_update'] = 'Update Source';

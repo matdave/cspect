@@ -13,7 +13,7 @@
             <column key="rank" length="" collation="A" null="false" />
         </index>
 
-        <aggregate alias="Hosts" class="CSPSourceDirective" local="id" foreign="source" cardinality="many" owner="local" />
+        <aggregate alias="Sources" class="CSPSourceDirective" local="id" foreign="source" cardinality="many" owner="local" />
     </object>
     <object class="CSPSource" table="cspect_source">
         <field key="name" dbtype="varchar" precision="127" phptype="string" null="false" default=""/>
@@ -27,7 +27,7 @@
             <column key="rank" length="" collation="A" null="false" />
         </index>
 
-        <aggregate alias="Sources" class="CSPSourceDirective" local="id" foreign="host" cardinality="many" owner="local" />
+        <aggregate alias="Directives" class="CSPSourceDirective" local="id" foreign="host" cardinality="many" owner="local" />
         <aggregate alias="Contexts" class="CSPSourceContext" local="id" foreign="host" cardinality="many" owner="local" />
     </object>
     <object class="CSPSourceDirective" table="cspect_source_directive">
@@ -43,8 +43,8 @@
             <column key="source" length="" collation="A" null="false" />
         </index>
 
-        <composite alias="Host" class="CSPSource" local="host" foreign="id" cardinality="one" owner="foreign" />
-        <composite alias="Source" class="CSPDirective" local="source" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="Source" class="CSPSource" local="host" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="Directive" class="CSPDirective" local="source" foreign="id" cardinality="one" owner="foreign" />
     </object>
     <object class="CSPSourceContext" table="cspect_source_context">
         <field key="host" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
@@ -58,7 +58,7 @@
             <column key="context_key" length="" collation="A" null="false" />
         </index>
 
-        <composite alias="Host" class="CSPSource" local="host" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="Source" class="CSPSource" local="host" foreign="id" cardinality="one" owner="foreign" />
         <composite alias="Context" class="modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />
     </object>
     <object class="CSPViolation" table="cspect_violation">

@@ -21,5 +21,14 @@
       "CSPSourceContext",
       "CSPViolation"
     ]
+  },
+  "build": {
+    "resolver": {
+      "after": [
+        "lit.php",
+        "directives.php",
+        "sources.php"
+      ]
+    }
   }
 }

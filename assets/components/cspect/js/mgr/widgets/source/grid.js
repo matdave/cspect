@@ -32,16 +32,26 @@ cspect.grid.Source = function (config) {
 }
 
 Ext.extend(cspect.grid.Source, MODx.grid.Grid, {
-    createSource: function () {
+    createSource: function (btn, e) {
         var record = {
-            name: '',
-            create: true
+            name: ''
         }
-        var win = MODx.load({
-            xtype: 'cspect-window-source'
+        var createSource = MODx.load({
+            xtype: 'cspect-window-source',
+            record: record,
+            isUpdate: false,
+            listeners: {
+                success: {
+                    fn: function() {
+                        this.refresh();
+                    },
+                    scope: this
+                }
+            }
         });
-        win.setValues(record);
-        win.show();
+        createSource.fp.getForm().setValues(record);
+        createSource.show(e.target);
+        return true;
     }
 });
 Ext.reg('cspect-grid-source', cspect.grid.Source);

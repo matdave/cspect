@@ -47,17 +47,28 @@ cspect.grid.Directive = function (config) {
 }
 
 Ext.extend(cspect.grid.Directive, MODx.grid.Grid, {
-    createDirective: function () {
+    createDirective: function (btn, e) {
         var record = {
             name: '',
             description: '',
-            create: true
         };
-        var win = MODx.load({
-            xtype: 'cspect-window-directive'
+        var createDirective = MODx.load({
+            xtype: 'cspect-window-directive',
+            record: record,
+            isUpdate: false,
+            listeners: {
+                success: {
+                    fn: function() {
+                        this.refresh();
+                    },
+                    scope: this
+                }
+            }
         });
-        win.setValues(record);
-        win.show();
+        console.log(createDirective);
+        createDirective.fp.getForm().setValues(record);
+        createDirective.show(e.target);
+        return true;
     }
 });
 Ext.reg('cspect-grid-directive', cspect.grid.Directive);

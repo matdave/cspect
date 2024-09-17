@@ -1,11 +1,14 @@
 cspect.window.Source = function (config) {
-    config = config || {};
+    config = config || {isUpdate: false};
     Ext.apply(config, {
-        title: config.record.create ? _('cspect.source_create') : _('cspect.source_update'),
+        title: !config.isUpdate ? _('cspect.source_create') : _('cspect.source_update'),
         url: cspect.config.connectorUrl,
         baseParams: {
-            action: config.record.create ? 'CSPect\\Processors\\Sources\\Create' : 'CSPect\\Processors\\Sources\\Update'
+            action: !config.isUpdate ? 'CSPect\\Processors\\Sources\\Create' : 'CSPect\\Processors\\Sources\\Update'
         },
+        modal: true,
+        autoHeight: true,
+        closeAction: 'close',
         fields: [
             {
                 xtype: 'textfield',
@@ -16,7 +19,7 @@ cspect.window.Source = function (config) {
             }
         ]
     });
-    cspect.window.Source.superclass.constructor
+    cspect.window.Source.superclass.constructor.call(this, config);
 }
 Ext.extend(cspect.window.Source, MODx.Window);
 Ext.reg('cspect-window-source', cspect.window.Source);

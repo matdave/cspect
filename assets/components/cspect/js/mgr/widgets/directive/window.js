@@ -1,11 +1,14 @@
 cspect.window.Directive = function (config) {
-    config = config || {};
+    config = config || {isUpdate: false};
     Ext.apply(config, {
-        title: config.record.create ? _('cspect.directive_create') : _('cspect.directive_update'),
+        title: !config.isUpdate ? _('cspect.directive_create') : _('cspect.directive_update'),
         url: cspect.config.connectorUrl,
         baseParams: {
-            action: config.record.create ? 'CSPect\\Processors\\Directives\\Create' : 'CSPect\\Processors\\Directives\\Update'
+            action: !config.isUpdate ? 'CSPect\\Processors\\Directives\\Create' : 'CSPect\\Processors\\Directives\\Update'
         },
+        modal: true,
+        autoHeight: true,
+        closeAction: 'close',
         fields: [
             {
                 xtype: 'textfield',
@@ -22,7 +25,7 @@ cspect.window.Directive = function (config) {
             }
         ]
     });
-    cspect.window.Directive.superclass.constructor
+    cspect.window.Directive.superclass.constructor.call(this, config);
 }
 Ext.extend(cspect.window.Directive, MODx.Window);
 Ext.reg('cspect-window-directive', cspect.window.Directive);

@@ -82,7 +82,7 @@ class CSPDirective extends \CSPect\Model\CSPDirective
         ),
         'aggregates' => 
         array (
-            'Directives' =>
+            'Sources' => 
             array (
                 'class' => 'CSPect\\Model\\CSPSourceDirective',
                 'local' => 'id',

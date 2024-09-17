@@ -75,7 +75,7 @@ class CSPSourceContext extends \CSPect\Model\CSPSourceContext
         ),
         'composites' => 
         array (
-            'Host' => 
+            'Source' => 
             array (
                 'class' => 'CSPect\\Model\\CSPSource',
                 'local' => 'host',

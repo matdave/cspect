@@ -82,7 +82,7 @@ class CSPSourceDirective extends \CSPect\Model\CSPSourceDirective
         ),
         'composites' => 
         array (
-            'Host' => 
+            'Source' => 
             array (
                 'class' => 'CSPect\\Model\\CSPSource',
                 'local' => 'host',
@@ -90,7 +90,7 @@ class CSPSourceDirective extends \CSPect\Model\CSPSourceDirective
                 'cardinality' => 'one',
                 'owner' => 'foreign',
             ),
-            'Source' => 
+            'Directive' => 
             array (
                 'class' => 'CSPect\\Model\\CSPDirective',
                 'local' => 'source',

@@ -79,7 +79,7 @@ class CSPSource extends \CSPect\Model\CSPSource
             array (
                 'class' => 'CSPect\\Model\\CSPSourceDirective',
                 'local' => 'id',
-                'foreign' => 'host',
+                'foreign' => 'source',
                 'cardinality' => 'many',
                 'owner' => 'local',
             ),
@@ -87,7 +87,7 @@ class CSPSource extends \CSPect\Model\CSPSource
             array (
                 'class' => 'CSPect\\Model\\CSPSourceContext',
                 'local' => 'id',
-                'foreign' => 'host',
+                'foreign' => 'source',
                 'cardinality' => 'many',
                 'owner' => 'local',
             ),

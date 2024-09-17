@@ -16,12 +16,12 @@ class CSPSourceContext extends \CSPect\Model\CSPSourceContext
         ),
         'fields' => 
         array (
-            'host' => 0,
+            'source' => 0,
             'context_key' => '',
         ),
         'fieldMeta' => 
         array (
-            'host' => 
+            'source' => 
             array (
                 'dbtype' => 'int',
                 'precision' => '10',
@@ -40,15 +40,15 @@ class CSPSourceContext extends \CSPect\Model\CSPSourceContext
         ),
         'indexes' => 
         array (
-            'host' => 
+            'source' => 
             array (
-                'alias' => 'host',
+                'alias' => 'source',
                 'primary' => false,
                 'unique' => false,
                 'type' => 'BTREE',
                 'columns' => 
                 array (
-                    'host' => 
+                    'source' => 
                     array (
                         'length' => '',
                         'collation' => 'A',
@@ -78,7 +78,7 @@ class CSPSourceContext extends \CSPect\Model\CSPSourceContext
             'Source' => 
             array (
                 'class' => 'CSPect\\Model\\CSPSource',
-                'local' => 'host',
+                'local' => 'source',
                 'foreign' => 'id',
                 'cardinality' => 'one',
                 'owner' => 'foreign',

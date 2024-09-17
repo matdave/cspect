@@ -16,13 +16,13 @@ class CSPSourceDirective extends \CSPect\Model\CSPSourceDirective
         ),
         'fields' => 
         array (
-            'host' => 0,
             'source' => 0,
+            'directive' => 0,
             'value' => NULL,
         ),
         'fieldMeta' => 
         array (
-            'host' => 
+            'source' => 
             array (
                 'dbtype' => 'int',
                 'precision' => '10',
@@ -30,7 +30,7 @@ class CSPSourceDirective extends \CSPect\Model\CSPSourceDirective
                 'null' => false,
                 'default' => 0,
             ),
-            'source' => 
+            'directive' => 
             array (
                 'dbtype' => 'int',
                 'precision' => '10',
@@ -47,22 +47,6 @@ class CSPSourceDirective extends \CSPect\Model\CSPSourceDirective
         ),
         'indexes' => 
         array (
-            'host' => 
-            array (
-                'alias' => 'host',
-                'primary' => false,
-                'unique' => false,
-                'type' => 'BTREE',
-                'columns' => 
-                array (
-                    'host' => 
-                    array (
-                        'length' => '',
-                        'collation' => 'A',
-                        'null' => false,
-                    ),
-                ),
-            ),
             'source' => 
             array (
                 'alias' => 'source',
@@ -79,13 +63,29 @@ class CSPSourceDirective extends \CSPect\Model\CSPSourceDirective
                     ),
                 ),
             ),
+            'directive' => 
+            array (
+                'alias' => 'directive',
+                'primary' => false,
+                'unique' => false,
+                'type' => 'BTREE',
+                'columns' => 
+                array (
+                    'directive' => 
+                    array (
+                        'length' => '',
+                        'collation' => 'A',
+                        'null' => false,
+                    ),
+                ),
+            ),
         ),
         'composites' => 
         array (
             'Source' => 
             array (
                 'class' => 'CSPect\\Model\\CSPSource',
-                'local' => 'host',
+                'local' => 'source',
                 'foreign' => 'id',
                 'cardinality' => 'one',
                 'owner' => 'foreign',
@@ -93,7 +93,7 @@ class CSPSourceDirective extends \CSPect\Model\CSPSourceDirective
             'Directive' => 
             array (
                 'class' => 'CSPect\\Model\\CSPDirective',
-                'local' => 'source',
+                'local' => 'directive',
                 'foreign' => 'id',
                 'cardinality' => 'one',
                 'owner' => 'foreign',

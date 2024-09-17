@@ -86,7 +86,7 @@ class CSPDirective extends \CSPect\Model\CSPDirective
             array (
                 'class' => 'CSPect\\Model\\CSPSourceDirective',
                 'local' => 'id',
-                'foreign' => 'source',
+                'foreign' => 'directive',
                 'cardinality' => 'many',
                 'owner' => 'local',
             ),

@@ -11,6 +11,8 @@ class GetList extends GetListProcessor
     use GetListTrait;
 
     public $classKey = CSPDirective::class;
+    public string $alias = 'CSPDirective';
     public $languageTopics = ['cspect'];
+    public $defaultSortField = 'rank';
 
 }

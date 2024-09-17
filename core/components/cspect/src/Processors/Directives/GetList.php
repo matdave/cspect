@@ -15,11 +15,12 @@ class GetList extends GetListProcessor
     public string $alias = 'CSPDirective';
     public $languageTopics = ['cspect'];
     public $defaultSortField = 'rank';
+    public $defaultSortDirection = 'ASC';
     public $countColumn = [
         'class' => CSPSourceDirective::class,
-        'alias' => 'Directives',
-        'column' => 'source',
-        'group' => 'source',
+        'alias' => 'Sources',
+        'column' => '`Sources`.`directive`',
+        'group' => '`CSPDirective`.`id`',
     ];
 
 }

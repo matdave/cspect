@@ -11,5 +11,10 @@
   },
   "require": {
     "matdave/modxpackage": "dev-main"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
   }
 }

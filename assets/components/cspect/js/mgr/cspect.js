@@ -12,6 +12,9 @@ Ext.extend(CSPect, Ext.Component, {
     combo: {},
     field: {},
     config: {},
+    go: function(action, id) {
+        location.href = '?a=' + action + (id ? '&id=' + id : '') + '&namespace=cspect';
+    },
 
 });
 Ext.reg('cspect', CSPect);

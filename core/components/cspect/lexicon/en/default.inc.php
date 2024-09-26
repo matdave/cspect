@@ -11,10 +11,16 @@ $_lang['cspect.manage.source_desc'] = 'Manage your CSP sources';
 
 $_lang['cspect.global.name'] = 'Name';
 $_lang['cspect.global.description'] = 'Description';
+$_lang['cspect.global.description_override'] = 'Description Override (optional) <small>Defaults to MDN description</small>';
+$_lang['cspect.global.default'] = 'Default';
+$_lang['cspect.global.rank'] = 'Rank';
+$_lang['cspect.global.change_order'] = 'Change Order';
 
 $_lang['cspect.directive'] = 'Directive';
 $_lang['cspect.directive_create'] = 'Create Directive';
 $_lang['cspect.directive_update'] = 'Update Directive';
+$_lang['cspect.directive_remove'] = 'Remove Directive';
+$_lang['cspect.directive_remove_confirm'] = 'Are you sure you want to remove this directive?';
 $_lang['cspect.directive.child-src'] = 'Child Source';
 $_lang['cspect.directive_desc.child-src'] = 'Allows the developer to control nested browsing contexts and worker execution contexts.';
 $_lang['cspect.directive.connect-src'] = 'Connect Source';
@@ -51,3 +57,8 @@ $_lang['cspect.directive_desc.style-src-elem'] = 'Specifies which URLs can be lo
 $_lang['cspect.source'] = 'Source';
 $_lang['cspect.source_create'] = 'Create Source';
 $_lang['cspect.source_update'] = 'Update Source';
+$_lang['cspect.source_remove'] = 'Remove Source';
+$_lang['cspect.source_remove_confirm'] = 'Are you sure you want to remove this source?';
+
+
+$_lang['cspect.err.bad_sort_column'] = 'Bad Sort Column!';

@@ -11,18 +11,17 @@ cspect.window.Directive = function (config) {
         closeAction: 'close',
         fields: [
             {
-                xtype: 'textfield',
-                fieldLabel: _('cspect.directive_name'),
+                xtype: 'cspect-combo-directives',
+                fieldLabel: _('cspect.global.name'),
                 name: 'name',
                 anchor: '100%',
-                allowBlank: false
-            },
+            }/*,
             {
                 xtype: 'textfield',
-                fieldLabel: _('cspect.directive_description'),
+                fieldLabel: _('cspect.global.description_override'),
                 name: 'description',
                 anchor: '100%'
-            }
+            }*/
         ]
     });
     cspect.window.Directive.superclass.constructor.call(this, config);

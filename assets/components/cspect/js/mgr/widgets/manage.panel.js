@@ -25,6 +25,10 @@ cspect.panel.Manage = function (config) {
                         layout: 'form',
                         items: [
                             {
+                                html: _('cspect.manage.directive_desc'),
+                                cls: 'panel-desc'
+                            },
+                            {
                                 xtype: 'cspect-grid-directive',
                                 cls: 'main-wrapper',
                                 preventRender: true
@@ -35,6 +39,10 @@ cspect.panel.Manage = function (config) {
                         title: _('cspect.manage.source'),
                         layout: 'form',
                         items: [
+                            {
+                                html: _('cspect.manage.source_desc'),
+                                cls: 'panel-desc'
+                            },
                             {
                                 xtype: 'cspect-grid-source',
                                 cls: 'main-wrapper',

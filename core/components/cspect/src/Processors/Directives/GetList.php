@@ -13,7 +13,7 @@ class GetList extends GetListProcessor
 
     public $classKey = CSPDirective::class;
     public string $alias = 'CSPDirective';
-    public $languageTopics = ['cspect'];
+    public $languageTopics = ['cspect:default'];
     public $defaultSortField = 'rank';
     public $defaultSortDirection = 'ASC';
     public $countColumn = [

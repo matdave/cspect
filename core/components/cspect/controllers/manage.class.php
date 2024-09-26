@@ -10,7 +10,7 @@ class CSPectManageManagerController extends CSPectBaseManagerController
 
     public function getPageTitle(): string
     {
-        return $this->modx->lexicon('cspect');
+        return $this->modx->lexicon('cspect.manage.page_title');
     }
 
     public function loadCustomCssJs(): void
@@ -21,6 +21,8 @@ class CSPectManageManagerController extends CSPectBaseManagerController
         $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/source/window.js');
         $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/manage.panel.js');
         $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/sections/manage.js');
+        $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/utils/combos.js');
+        $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/utils/griddraganddrop.js');
 
         $this->addHtml(
             '

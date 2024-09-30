@@ -9,6 +9,28 @@ menus:
         text: cspect.menu
         description: cspect.menu_desc
         action: manage
+plugins:
+    -
+        name: CSPect
+        events:
+            - OnWebPagePrerender
+systemSettings:
+    -
+        key: report_only
+        value: 0
+        xtype: combo-boolean
+    -
+        key: report_uri
+        value: '{{cspect.assets_url}}/report.php'
+        xtype: textfield
+    -
+        key: report_to
+        value: 'cspect'
+        xtype: textfield
+    -
+        key: reporting_endpoints
+        value: 'cspect="{{cspect.assets_url}}/report.php"'
+        xtype: textfield
 database:
     tables:
         - CSPect\Model\CSPDirective

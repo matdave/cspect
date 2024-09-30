@@ -43,7 +43,7 @@ trait GetList
                 $filterValue = (int)$this->getProperty($filterName);
 
                 if (empty($filterValue)) {
-                    return $this->failure($this->modx->lexicon('topgolf.err.' . $filterName . '_ns'));
+                    return $this->failure($this->modx->lexicon('cspect.err.' . $filterName . '_ns'));
                 }
 
                 $where[$filterName] = $filterValue;

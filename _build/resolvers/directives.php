@@ -13,7 +13,7 @@ if ($object->xpdo) {
                 'script-src',
                 'style-src',
             ];
-            $rank = 0;
+            $rank = 1;
             foreach ($sources as $source) {
                 $obj = $modx->getObject('CSPDirective', ['name' => $source]);
                 if (!$obj) {

@@ -73,7 +73,7 @@ class CSPSource extends \CSPect\Model\CSPSource
                 ),
             ),
         ),
-        'aggregates' => 
+        'composites' => 
         array (
             'Directives' => 
             array (

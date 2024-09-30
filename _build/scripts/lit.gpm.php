@@ -19,14 +19,12 @@ return new class() {
         $setting = $this->modx->getObject(modSystemSetting::class, ['key' => 'cspect.lit']);
         if (!$setting) {
             $setting = $this->modx->newObject(modSystemSetting::class);
-            $setting->fromArray([
-                'key' => 'cspect.lit',
-                'namespace' => 'cspect',
-                'xtype' => 'textfield',
-                'area' => 'cspect',
-                'editedon' => time(),
-                'editedby' => 0,
-            ]);
+            $setting->set('key', 'cspect.lit');
+            $setting->set('namespace', 'cspect');
+            $setting->set('xtype', 'textfield');
+            $setting->set('area', 'cspect');
+            $setting->set('editedon', time());
+            $setting->set('editedby', 0);
         }
         $setting->set('value', time());
         $setting->save();

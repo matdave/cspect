@@ -10,6 +10,8 @@ use xPDO\xPDO;
  * @property string $description
  * @property integer $rank
  *
+ * @property \CSPect\Model\CSPSourceDirective[] $Sources
+ *
  * @package CSPect\Model
  */
 class CSPDirective extends \xPDO\Om\xPDOSimpleObject

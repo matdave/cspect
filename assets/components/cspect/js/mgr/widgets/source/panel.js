@@ -1,18 +1,18 @@
-cspect.panel.Directive = function(config) {
+cspect.panel.Source = function (config) {
     config = config || {
-        directive: {
+        source: {
             id: 0,
-            name: "",
-        },
+            name: '',
+        }
     };
-    Ext.apply(config, {
-        id: "cspect-panel-directive",
+    Ext.applyIf(config, {
+        formpanel: 'cspect-panel-source',
         cls: "container form-with-labels",
         border: true,
         baseCls: 'modx-formpanel',
         url: MODx.config.connector_url,
         baseParams: {
-            action: 'CSPect\\Processors\\Directives\\Update',
+            action: 'CSPect\\Processors\\Sources\\Update',
         },
         useLoadingMask: true,
         defaults: {
@@ -24,7 +24,7 @@ cspect.panel.Directive = function(config) {
         },
         items: [
             MODx.util.getHeaderBreadCrumbs({
-                html: cspect.directive.name + ' (' + cspect.directive.id + ')',
+                html: cspect.source.name + ' (' + cspect.source.id + ')',
                 xtype: "modx-header"
             }, [
                 {
@@ -32,7 +32,7 @@ cspect.panel.Directive = function(config) {
                     href: '?a=manage&namespace=cspect',
                 },
                 {
-                    text: _('cspect.manage.directive'),
+                    text: _('cspect.manage.source'),
                     href: null,
                 }
             ]),
@@ -43,8 +43,7 @@ cspect.panel.Directive = function(config) {
             {
                 name: "name",
                 xtype: "hidden"
-            },
-            {
+            }, {
                 layout: "form",
                 bodyCssClass: "main-wrapper",
                 style: {
@@ -52,7 +51,8 @@ cspect.panel.Directive = function(config) {
                 },
                 items: [
                     {
-                        html: _('cspect.directive_desc.' + cspect.directive.name),
+                        xtype: "cspect-grid-sourcedirective",
+                        source: cspect.source,
                     }
                 ]
             }, {
@@ -63,12 +63,11 @@ cspect.panel.Directive = function(config) {
                 },
                 items: [
                     {
-                        xtype: "cspect-grid-sourcedirective",
-                        directive: cspect.directive,
+                        xtype: "cspect-grid-sourcecontext",
+                        source: cspect.source,
                     }
                 ]
             }
-
         ],
         listeners: {
             setup: {
@@ -81,20 +80,18 @@ cspect.panel.Directive = function(config) {
             }
         }
     });
-    cspect.panel.Directive.superclass.constructor.call(this, config);
+    cspect.panel.Source.superclass.constructor.call(this, config);
 }
 
-Ext.extend(cspect.panel.Directive, MODx.FormPanel, {
-    setup: function() {
-        this.getForm().setValues(cspect.directive);
-        this.fireEvent("ready");
-        MODx.fireEvent("ready");
+Ext.extend(cspect.panel.Source, MODx.FormPanel, {
+    setup: function () {
+        this.getForm().setValues(cspect.source);
     },
-    success: function(r) {
+    success: function (r) {
         if (r.result.object) {
-            cspect.directive = r.result.object;
+            cspect.source = r.result.object;
         }
     }
 });
 
-Ext.reg('cspect-panel-directive', cspect.panel.Directive);
+Ext.reg('cspect-panel-source', cspect.panel.Source);

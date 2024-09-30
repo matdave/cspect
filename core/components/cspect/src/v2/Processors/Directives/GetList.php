@@ -8,6 +8,13 @@ class GetList extends \modObjectGetListProcessor
 
     public $classKey = 'CSPDirective';
     public string $alias = 'CSPDirective';
-    public $languageTopics = ['cspect'];
+    public $languageTopics = ['cspect:default'];
     public $defaultSortField = 'rank';
+    public $defaultSortDirection = 'ASC';
+    public $countColumn = [
+        'class' => 'CSPSourceDirective',
+        'alias' => 'Sources',
+        'column' => '`Sources`.`directive`',
+        'group' => '`CSPDirective`.`id`',
+    ];
 }

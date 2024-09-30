@@ -12,8 +12,7 @@ use xPDO\xPDO;
  * @property string $url
  * @property string $user_agent
  * @property array $body
- *
- * @property \MODX\Revolution\modContext $Context
+ * @property string $created_on
  *
  * @package CSPect\Model
  */

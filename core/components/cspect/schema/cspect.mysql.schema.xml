@@ -13,7 +13,7 @@
             <column key="rank" length="" collation="A" null="false" />
         </index>
 
-        <aggregate alias="Sources" class="CSPect\Model\CSPSourceDirective" local="id" foreign="directive" cardinality="many" owner="local" />
+        <composite alias="Sources" class="CSPect\Model\CSPSourceDirective" local="id" foreign="directive" cardinality="many" owner="local" />
     </object>
     <object class="CSPSource" table="cspect_source">
         <field key="name" dbtype="varchar" precision="127" phptype="string" null="false" default=""/>
@@ -27,8 +27,8 @@
             <column key="rank" length="" collation="A" null="false" />
         </index>
 
-        <aggregate alias="Directives" class="CSPect\Model\CSPSourceDirective" local="id" foreign="source" cardinality="many" owner="local" />
-        <aggregate alias="Contexts" class="CSPect\Model\CSPSourceContext" local="id" foreign="source" cardinality="many" owner="local" />
+        <composite alias="Directives" class="CSPect\Model\CSPSourceDirective" local="id" foreign="source" cardinality="many" owner="local" />
+        <composite alias="Contexts" class="CSPect\Model\CSPSourceContext" local="id" foreign="source" cardinality="many" owner="local" />
     </object>
     <object class="CSPSourceDirective" table="cspect_source_directive">
         <field key="source" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
@@ -43,8 +43,8 @@
             <column key="directive" length="" collation="A" null="false" />
         </index>
 
-        <composite alias="Source" class="CSPect\Model\CSPSource" local="source" foreign="id" cardinality="one" owner="foreign" />
-        <composite alias="Directive" class="CSPect\Model\CSPDirective" local="directive" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Source" class="CSPect\Model\CSPSource" local="source" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Directive" class="CSPect\Model\CSPDirective" local="directive" foreign="id" cardinality="one" owner="foreign" />
     </object>
     <object class="CSPSourceContext" table="cspect_source_context">
         <field key="source" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
@@ -58,8 +58,8 @@
             <column key="context_key" length="" collation="A" null="false" />
         </index>
 
-        <composite alias="Source" class="CSPect\Model\CSPSource" local="source" foreign="id" cardinality="one" owner="foreign" />
-        <composite alias="Context" class="MODX\Revolution\modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />
+        <aggregate alias="Source" class="CSPect\Model\CSPSource" local="source" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Context" class="MODX\Revolution\modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />
     </object>
     <object class="CSPViolation" table="cspect_violation">
         <field key="context_key" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
@@ -86,6 +86,6 @@
             <column key="created_on" length="" collation="A" null="false" />
         </index>
 
-        <composite alias="Context" class="MODX\Revolution\modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />
+        <aggregate alias="Context" class="MODX\Revolution\modContext" local="context_key" foreign="key" cardinality="one" owner="foreign" />
     </object>
 </model>

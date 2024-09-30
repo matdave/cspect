@@ -8,7 +8,7 @@ cspect.grid.Source = function (config) {
             dir: 'asc'
         },
         save_action: 'CSPect\\Processors\\Sources\\UpdateFromGrid',
-        fields: ['id', 'name', 'rank'],
+        fields: ['id', 'name', 'rank', 'directives_count'],
         columns: [
             {
                 header: _('id'),
@@ -33,6 +33,11 @@ cspect.grid.Source = function (config) {
                 sortable: true,
                 width: 100,
             },
+            {
+                header: _('cspect.manage.directive'),
+                dataIndex: 'directives_count',
+                sortable: true,
+            }
         ],
         tbar: [
             {
@@ -69,6 +74,9 @@ Ext.extend(cspect.grid.Source, MODx.grid.Grid, {
             handler: this.removeSource
         });
         return menu;
+    },
+    updateSource: function(btn, e) {
+        cspect.go('source', this.menu.record.id);
     },
     removeSource: function(btn, e) {
         MODx.msg.confirm({

@@ -143,7 +143,7 @@ class CSPViolation extends \CSPect\Model\CSPViolation
                 ),
             ),
         ),
-        'composites' => 
+        'aggregates' => 
         array (
             'Context' => 
             array (

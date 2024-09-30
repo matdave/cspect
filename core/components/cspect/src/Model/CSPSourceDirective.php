@@ -4,14 +4,11 @@ namespace CSPect\Model;
 use xPDO\xPDO;
 
 /**
- * Class CSPSourceDirectiveDirective
+ * Class CSPSourceDirective
  *
- * @property integer $host
  * @property integer $source
+ * @property integer $directive
  * @property string $value
- *
- * @property \CSPect\Model\CSPSource $Host
- * @property \CSPect\Model\CSPDirective $Source
  *
  * @package CSPect\Model
  */

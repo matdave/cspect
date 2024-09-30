@@ -80,7 +80,7 @@ class CSPDirective extends \CSPect\Model\CSPDirective
                 ),
             ),
         ),
-        'aggregates' => 
+        'composites' => 
         array (
             'Sources' => 
             array (

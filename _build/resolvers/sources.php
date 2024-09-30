@@ -13,7 +13,7 @@ if ($object->xpdo) {
                 'data:',
                 'blob:',
             ];
-            $rank = 0;
+            $rank = 1;
             foreach ($sources as $source) {
                 $obj = $modx->getObject('CSPSource', ['name' => $source]);
                 if (!$obj) {

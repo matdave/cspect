@@ -10,9 +10,9 @@ return new class() {
     {
         $this->modx = $modx;
         $this->action = $action;
-        if ($this->action !== 'install') {
+        /* if ($this->action !== 'install') {
             return true;
-        }
+        } */
         $this->run();
         return true;
     }

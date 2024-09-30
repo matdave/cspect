@@ -73,7 +73,7 @@ class CSPSourceContext extends \CSPect\Model\CSPSourceContext
                 ),
             ),
         ),
-        'composites' => 
+        'aggregates' => 
         array (
             'Source' => 
             array (

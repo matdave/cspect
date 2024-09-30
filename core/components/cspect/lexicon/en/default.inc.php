@@ -15,6 +15,11 @@ $_lang['cspect.global.description_override'] = 'Description Override (optional) 
 $_lang['cspect.global.default'] = 'Default';
 $_lang['cspect.global.rank'] = 'Rank';
 $_lang['cspect.global.change_order'] = 'Change Order';
+$_lang['cspect.global.remove'] = 'Remove';
+$_lang['cspect.global.remove_confirm'] = 'Are you sure you want to remove this item?';
+
+$_lang['cspect.combo.empty.directive'] = 'Select a Directive';
+$_lang['cspect.combo.empty.source'] = 'Select a Source';
 
 $_lang['cspect.directive'] = 'Directive';
 $_lang['cspect.directive_create'] = 'Create Directive';
@@ -60,5 +65,19 @@ $_lang['cspect.source_update'] = 'Update Source';
 $_lang['cspect.source_remove'] = 'Remove Source';
 $_lang['cspect.source_remove_confirm'] = 'Are you sure you want to remove this source?';
 
+$_lang['cspect.sourcedirective_create.source'] = 'Add Source';
+$_lang['cspect.sourcedirective_create.directive'] = 'Add Directive';
+
+$_lang['cspect.context'] = 'Context';
+$_lang['cspect.context_update'] = 'Update Context';
+
+$_lang['cspect.sourcecontext'] = 'Source Context';
+$_lang['cspect.sourcecontext_create'] = 'Create Source Context';
+$_lang['cspect.sourcecontext_create.context'] = 'Add Context';
+$_lang['cspect.sourcecontext_create.source'] = 'Add Source';
+
 
 $_lang['cspect.err.bad_sort_column'] = 'Bad Sort Column!';
+
+$_lang['settings_cspect.report_only'] = 'Report Only';
+$_lang['settings_cspect.report_only_desc'] = 'Enable report only mode for CSP headers.';

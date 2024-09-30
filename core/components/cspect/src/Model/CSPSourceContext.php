@@ -6,11 +6,8 @@ use xPDO\xPDO;
 /**
  * Class CSPSourceContext
  *
- * @property integer $host
+ * @property integer $source
  * @property string $context_key
- *
- * @property \CSPect\Model\CSPSource $Host
- * @property \MODX\Revolution\modContext $Context
  *
  * @package CSPect\Model
  */

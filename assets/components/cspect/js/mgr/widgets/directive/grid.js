@@ -8,7 +8,7 @@ cspect.grid.Directive = function (config) {
             dir: 'asc'
         },
         save_action: 'CSPect\\Processors\\Directives\\UpdateFromGrid',
-        fields: ['id', 'name', 'description', 'rank'],
+        fields: ['id', 'name', 'description', 'rank', 'sources_count'],
         columns: [
             {
                 header: _('id'),
@@ -48,6 +48,11 @@ cspect.grid.Directive = function (config) {
                     return value;
                 }
             },
+            {
+                header: _('cspect.manage.source'),
+                dataIndex: 'sources_count',
+                sortable: true,
+            }
         ],
         tbar: [
             {

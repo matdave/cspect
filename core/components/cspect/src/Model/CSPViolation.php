@@ -13,6 +13,8 @@ use xPDO\xPDO;
  * @property string $user_agent
  * @property array $body
  * @property string $created_on
+ * @property string $directive
+ * @property string $blocked
  *
  * @package CSPect\Model
  */

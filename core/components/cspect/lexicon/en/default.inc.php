@@ -8,8 +8,11 @@ $_lang['cspect.manage.directive'] = 'Directives';
 $_lang['cspect.manage.directive_desc'] = 'Manage your CSP directives';
 $_lang['cspect.manage.source'] = 'Sources';
 $_lang['cspect.manage.source_desc'] = 'Manage your CSP sources';
+$_lang['cspect.manage.violation'] = 'Reports';
+$_lang['cspect.manage.violation_desc'] = 'Review CSP violation reports';
 
 $_lang['cspect.global.name'] = 'Name';
+$_lang['cspect.global.created_on'] = 'Created On';
 $_lang['cspect.global.description'] = 'Description';
 $_lang['cspect.global.description_override'] = 'Description Override (optional) <small>Defaults to MDN description</small>';
 $_lang['cspect.global.default'] = 'Default';
@@ -17,6 +20,7 @@ $_lang['cspect.global.rank'] = 'Rank';
 $_lang['cspect.global.change_order'] = 'Change Order';
 $_lang['cspect.global.remove'] = 'Remove';
 $_lang['cspect.global.remove_confirm'] = 'Are you sure you want to remove this item?';
+$_lang['cspect.global.url'] = 'URL';
 
 $_lang['cspect.combo.empty.directive'] = 'Select a Directive';
 $_lang['cspect.combo.empty.source'] = 'Select a Source';
@@ -76,8 +80,46 @@ $_lang['cspect.sourcecontext_create'] = 'Create Source Context';
 $_lang['cspect.sourcecontext_create.context'] = 'Add Context';
 $_lang['cspect.sourcecontext_create.source'] = 'Add Source';
 
+$_lang['cspect.violation'] = 'Report';
+$_lang['cspect.violation.view'] = 'View Report';
+$_lang['cspect.violation.age'] = 'Age';
+$_lang['cspect.violation.type'] = 'Type';
+$_lang['cspect.violation.user_agent'] = 'User Agent';
+$_lang['cspect.violation.body'] = 'Body';
+$_lang['cspect.violation.directive'] = 'Directive';
+$_lang['cspect.violation.blocked'] = 'Blocked';
+$_lang['cspect.violation.clear'] = 'Clear Reports';
+$_lang['cspect.violation.clear_confirm'] = 'Are you sure you want to clear all reports?';
+
+$_lang['cspect.violation.body.blockedURL'] = 'Blocked';
+$_lang['cspect.violation.body.blockedURI'] = 'Blocked';
+$_lang['cspect.violation.body.documentURI'] = 'URI';
+$_lang['cspect.violation.body.documentURL'] = 'URL';
+$_lang['cspect.violation.body.disposition'] = 'Disposition';
+$_lang['cspect.violation.body.originalPolicy'] = 'Policy';
+$_lang['cspect.violation.body.referrer'] = 'Referrer';
+$_lang['cspect.violation.body.effectiveDirective'] = 'Directive';
+$_lang['cspect.violation.body.violatedDirective'] = 'Directive';
+$_lang['cspect.violation.body.lineNumber'] = 'Line #';
+$_lang['cspect.violation.body.columnNumber'] = 'Column #';
+$_lang['cspect.violation.body.sample'] = 'Sample';
+$_lang['cspect.violation.body.scriptSample'] = 'Sample';
+$_lang['cspect.violation.body.sourceFile'] = 'Source';
+$_lang['cspect.violation.body.statusCode'] = 'Status';
+$_lang['cspect.violation.body.statusMessage'] = 'Message';
+$_lang['cspect.violation.auto_fix'] = 'Auto Fix';
+$_lang['cspect.violation.auto_fix_confirm'] = 'Are you sure you want to auto fix this report?';
+$_lang['cspect.violation.auto_fix_unavailable'] = 'Auto Fix Unavailable';
 
 $_lang['cspect.err.bad_sort_column'] = 'Bad Sort Column!';
 
 $_lang['settings_cspect.report_only'] = 'Report Only';
 $_lang['settings_cspect.report_only_desc'] = 'Enable report only mode for CSP headers.';
+$_lang['settings_cspect.report_uri'] = 'Report URI';
+$_lang['settings_cspect.report_uri_desc'] = 'A fallback URI to use for reporting CSP violations on browsers that don\'t support the report-to interface. e.g. https://example.com/csp-reports';
+$_lang['settings_cspect.report_to'] = 'Report To';
+$_lang['settings_cspect.report_to_desc'] = 'A directive to specify that a particular defined endpoint should be used for reporting. e.g. csp-endpoint';
+$_lang['settings_cspect.reporting_endpoints'] = 'Reporting Endpoints';
+$_lang['settings_cspect.reporting_endpoints_desc'] = 'This setting defines one or more endpoint URLs as a comma-separated list. e.g. csp-endpoint="https://example.com/csp-reports"';
+$_lang['settings_cspect.default_contexts'] = 'Default Contexts';
+$_lang['settings_cspect.default_contexts_desc'] = 'This setting defines one or more default contexts as a comma-separated list to automatically assign a source to when created.';

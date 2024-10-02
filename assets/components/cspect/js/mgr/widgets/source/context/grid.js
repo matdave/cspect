@@ -102,7 +102,7 @@ Ext.extend(cspect.grid.SourceContext, MODx.grid.Grid, {
             text: _('cspect.sourcecontext_remove_confirm'),
             url: this.config.url,
             params: {
-                action: 'CSPect\\Processors\\SourceContexts\\Remove',
+                action: 'CSPect\\Processors\\SourceContexts\\Delete',
                 id: this.menu.record.id
             },
             listeners: {

@@ -17,6 +17,7 @@ cspect.window.SourceDirective = function (config) {
         modal: true,
         autoHeight: true,
         closeAction: 'close',
+        collapsible: false,
         fields: this.getFields(config),
     });
     cspect.window.SourceDirective.superclass.constructor.call(this, config);

@@ -15,6 +15,7 @@ cspect.window.SourceContext = function (config) {
         modal: true,
         autoHeight: true,
         closeAction: 'close',
+        collapsible: false,
         fields: this.getFields(config),
     });
     cspect.window.SourceContext.superclass.constructor.call(this, config);

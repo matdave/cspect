@@ -127,7 +127,6 @@ Ext.extend(cspect.grid.Directive, MODx.grid.Grid, {
                 }
             }
         });
-        console.log(createDirective);
         createDirective.fp.getForm().setValues(record);
         createDirective.show(e.target);
         return true;

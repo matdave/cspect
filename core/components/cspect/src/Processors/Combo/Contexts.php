@@ -14,12 +14,19 @@ class Contexts extends Processor
         if (empty($source)) {
             return $this->failure('Invalid source');
         }
-        $c = $this->modx->newQuery(modContext::class);
-        $c->leftJoin(CSPSourceContext::class, 'CSPSourceContext', 'CSPSourceContext.context_key = modContext.key');
-        $c->where([
-            'CSPSourceContext.source:!=' => $source,
-            'OR:CSPSourceContext.source:IS' => null,
+        $exclude = $this->modx->getIterator(CSPSourceContext::class, [
+            'source' => $source,
         ]);
+        $excludeIds = [];
+        foreach ($exclude as $item) {
+            $excludeIds[] = $item->get('context_key');
+        }
+        $c = $this->modx->newQuery(modContext::class);
+        if (!empty($excludeIds)) {
+            $c->where([
+                'modContext.key:NOT IN' => $excludeIds,
+            ]);
+        }
         $query = $this->getProperty('query');
         if (!empty($query)) {
             $c->where([

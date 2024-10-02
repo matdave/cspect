@@ -8,6 +8,7 @@ cspect.window.Source = function (config) {
         },
         modal: true,
         autoHeight: true,
+        collapsible: false,
         closeAction: 'close',
         fields: [
             {

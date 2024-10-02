@@ -49,6 +49,21 @@ cspect.panel.Manage = function (config) {
                                 preventRender: true
                             }
                         ]
+                    },
+                    {
+                        title: _('cspect.manage.violation'),
+                        layout: 'form',
+                        items: [
+                            {
+                                html: _('cspect.manage.violation_desc'),
+                                cls: 'panel-desc'
+                            },
+                            {
+                                xtype: 'cspect-grid-violation',
+                                cls: 'main-wrapper',
+                                preventRender: true
+                            }
+                        ]
                     }
                 ]
             }

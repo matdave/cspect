@@ -62,7 +62,7 @@ class OnWebPagePrerender extends Event
                 'directive' => $directive->get('id'),
             ]);
             if (!empty($check)) {
-                if (str_contains($source->get('name'), '.')) {
+                if ($this->strContainsAny($source->get('name'), ['.', ':'])) {
                     $sources[] = $source->get('name');
                 } else {
                     $sources[] = "'{$source->get('name')}'";
@@ -72,6 +72,16 @@ class OnWebPagePrerender extends Event
         if (!empty($sources)) {
             $header .= $directive->get('name') . ' ' . implode(' ', $sources) . '; ';
         }
+    }
+
+    private function strContainsAny(string $haystack, array $needles): bool
+    {
+        foreach ($needles as $needle) {
+            if (str_contains($haystack, $needle)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public function getReportUri(&$header): void

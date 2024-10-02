@@ -69,6 +69,8 @@
         <field key="user_agent" dbtype="text" phptype="string" null="true"/>
         <field key="body" dbtype="text" phptype="json" null="true"/>
         <field key="created_on" dbtype="datetime" phptype="datetime" null="false" default="CURRENT_TIMESTAMP"/>
+        <field key="directive" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="blocked" dbtype="text" phptype="string" null="true"/>
 
         <index alias="context_key" name="context_key"  primary="false" unique="false" type="BTREE">
             <column key="context_key" length="" collation="A" null="false" />
@@ -80,6 +82,10 @@
 
         <index alias="age" name="age"  primary="false" unique="false" type="BTREE">
             <column key="age" length="" collation="A" null="false" />
+        </index>
+
+        <index alias="directive" name="directive"  primary="false" unique="false" type="BTREE">
+            <column key="directive" length="" collation="A" null="false" />
         </index>
 
         <index alias="created_on" name="created_on"  primary="false" unique="false" type="BTREE">

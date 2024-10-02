@@ -1,0 +1,11 @@
+.table {
+    border: 1px solid;
+}
+.table th, .table td {
+    padding: 5px;
+}
+.table th {
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+}

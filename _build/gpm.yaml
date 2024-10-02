@@ -31,6 +31,10 @@ systemSettings:
         key: reporting_endpoints
         value: 'cspect="{{cspect.assets_url}}/report.php"'
         xtype: textfield
+    -
+        key: default_contexts
+        value: 'web'
+        xtype: textfield
 database:
     tables:
         - CSPect\Model\CSPDirective

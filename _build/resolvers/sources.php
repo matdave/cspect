@@ -13,6 +13,8 @@ if ($object->xpdo) {
                 'data:',
                 'blob:',
             ];
+            $contexts = $modx->getOption('cspect.default_contexts', null, 'web');
+            $contexts = explode(',', $contexts);
             $rank = 1;
             foreach ($sources as $source) {
                 $obj = $modx->getObject('CSPSource', ['name' => $source]);
@@ -21,6 +23,12 @@ if ($object->xpdo) {
                     $obj->set('name', $source);
                     $obj->set('rank', $rank);
                     $obj->save();
+                    foreach ($contexts as $context) {
+                        $cobj = $modx->newObject('CSPSourceContext');
+                        $cobj->set('source', $obj->get('id'));
+                        $cobj->set('context_key', $context);
+                        $cobj->save();
+                    }
                 }
                 $rank++;
             }

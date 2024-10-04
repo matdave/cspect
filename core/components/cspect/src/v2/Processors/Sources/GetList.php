@@ -2,7 +2,9 @@
 
 namespace CSPect\v2\Processors\Sources;
 
-class GetList extends \modObjectGetListProcessor
+use modObjectGetListProcessor;
+
+class GetList extends modObjectGetListProcessor
 {
     use \CSPect\v2\Traits\Processors\GetList;
 

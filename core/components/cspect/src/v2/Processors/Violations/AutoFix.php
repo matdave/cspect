@@ -1,16 +1,10 @@
 <?php
 
-namespace CSPect\Processors\Violations;
+namespace CSPect\v2\Processors\Violations;
 
-use CSPect\Model\CSPDirective;
-use CSPect\Model\CSPSource;
-use CSPect\Model\CSPSourceContext;
-use CSPect\Model\CSPSourceDirective;
-use CSPect\Model\CSPViolation;
-use MODX\Revolution\modContext;
-use MODX\Revolution\Processors\Processor;
+use modProcessor;
 
-class AutoFix extends Processor
+class AutoFix extends modProcessor
 {
     public function process()
     {
@@ -28,68 +22,68 @@ class AutoFix extends Processor
             return $this->failure('Unable to determine source');
         }
 
-        $source = $this->modx->getObject(CSPSource::class, ['name' => $source_str]);
+        $source = $this->modx->getObject('CSPSource', ['name' => $source_str]);
         if (empty($source)) {
             $sourceRank = 1;
-            $c = $this->modx->newQuery(CSPSource::class);
+            $c = $this->modx->newQuery('CSPSource');
             $c->sortby('rank', 'DESC');
-            $lastSource = $this->modx->getObject(CSPSource::class, $c);
+            $lastSource = $this->modx->getObject('CSPSource', $c);
             if ($lastSource) {
                 $sourceRank = $lastSource->get('rank') + 1;
             }
-            $source = $this->modx->newObject(CSPSource::class);
+            $source = $this->modx->newObject('CSPSource');
             $source->set('name', $source_str);
             $source->set('rank', $sourceRank);
             $source->save();
         }
 
-        $context = $this->modx->getObject(modContext::class, ['key' => $contextKey]);
+        $context = $this->modx->getObject('modContext', ['key' => $contextKey]);
         if (!$context) {
             return $this->failure('Context not found');
         }
 
-        $directive = $this->modx->getObject(CSPDirective::class, ['name' => $directive_str]);
+        $directive = $this->modx->getObject('CSPDirective', ['name' => $directive_str]);
         if (empty($directive)) {
             $directiveRank = 1;
-            $c = $this->modx->newQuery(CSPDirective::class);
+            $c = $this->modx->newQuery('CSPDirective');
             $c->sortby('rank', 'DESC');
-            $lastDirective = $this->modx->getObject(CSPDirective::class, $c);
+            $lastDirective = $this->modx->getObject('CSPDirective', $c);
             if ($lastDirective) {
                 $directiveRank = $lastDirective->get('rank') + 1;
             }
-            $directive = $this->modx->newObject(CSPDirective::class);
+            $directive = $this->modx->newObject('CSPDirective');
             $directive->set('name', $directive_str);
             $directive->set('rank', $directiveRank);
             $directive->save();
         }
 
-        $sourceContext = $this->modx->getObject(CSPSourceContext::class,
+        $sourceContext = $this->modx->getObject('CSPSourceContext',
             [
                 'context_key' => $contextKey,
                 'source' => $source->get('id')
             ]
         );
         if (empty($sourceContext)) {
-            $sourceContext = $this->modx->newObject(CSPSourceContext::class);
+            $sourceContext = $this->modx->newObject('CSPSourceContext');
             $sourceContext->set('source', $source->get('id'));
             $sourceContext->set('context_key', $context->get('key'));
             $sourceContext->save();
         }
 
-        $sourceDirective = $this->modx->getObject(CSPSourceDirective::class,
+        $sourceDirective = $this->modx->getObject('CSPSourceDirective',
             [
                 'directive' => $directive->get('id'),
                 'source' => $source->get('id')
             ]
         );
         if (empty($sourceDirective)) {
-            $sourceDirective = $this->modx->newObject(CSPSourceDirective::class);
+            $sourceDirective = $this->modx->newObject('CSPSourceDirective');
             $sourceDirective->set('source', $source->get('id'));
             $sourceDirective->set('directive', $directive->get('id'));
             $sourceDirective->save();
         }
 
-        $this->modx->removeCollection(CSPViolation::class, [
+        $this->modx->removeCollection('CSPViolation', [
             'directive' => $directive_str,
             'blocked:LIKE' => '%' . $blocked . '%',
             'context_key' => $contextKey

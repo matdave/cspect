@@ -29,6 +29,9 @@ abstract class CSPectBaseManagerController extends modExtraManagerController {
         $this->lit = $this->modx->getOption('cspect.lit', null, 0);
 
         $this->addCss($this->cspect->getOption('cssUrl') . 'mgr.css');
+        if ($this->version < 3) {
+            $this->addCss($this->cspect->getOption('cssUrl') . 'shim.css');
+        }
         $this->addJavascript($this->cspect->getOption('jsUrl') . 'mgr/cspect.js');
 
         $this->addHtml('

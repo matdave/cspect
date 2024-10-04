@@ -2,9 +2,25 @@
 
 namespace CSPect\v2\Processors\Combo;
 
-class Directives extends \modProcessor
+use modProcessor;
+
+class Directives extends modProcessor
 {
+    public function getLanguageTopics()
+    {
+        return ['cspect:default'];
+    }
+
     public function process()
+    {
+        $source = $this->getProperty('source');
+        if (empty($source)) {
+            return $this->staticDirectives();
+        }
+        return $this->dynamicDirectives($source);
+    }
+
+    public function staticDirectives()
     {
         $availableDirectives = [
             "base-uri",
@@ -19,7 +35,7 @@ class Directives extends \modProcessor
             "manifest-src",
             "media-src",
             "object-src",
-            "report-uri",
+            //"report-uri",
             "script-src",
             "script-src-attr",
             "script-src-elem",
@@ -51,12 +67,51 @@ class Directives extends \modProcessor
             $unusedDirectives = array_slice($unusedDirectives, $start, $limit);
         }
         $directivesFormat = [];
+
         foreach ($unusedDirectives as $directive) {
             $directivesFormat[] = [
                 'value' => $directive,
             ];
         }
 
+        return $this->outputArray(array_values($directivesFormat), $total);
+    }
+
+    public function dynamicDirectives($source)
+    {
+        $exclude = $this->modx->getIterator('CSPSourceDirective', [
+            'source' => $source,
+        ]);
+        $excludeIds = [];
+        foreach ($exclude as $item) {
+            $excludeIds[] = $item->get('directive');
+        }
+        $c = $this->modx->newQuery('CSPDirective');
+        $query = $this->getProperty('query');
+        if (!empty($excludeIds)) {
+            $c->where([
+                'id:NOT IN' => $excludeIds,
+            ]);
+        }
+        if (!empty($query)) {
+            $c->where([
+                'CSPDirective.name:LIKE' => "%$query%",
+            ]);
+        }
+        $start = $this->getProperty('start', 0);
+        $limit = $this->getProperty('limit', 0);
+        $c->select($this->modx->getSelectColumns('CSPDirective', 'CSPDirective'));
+        $total = $this->modx->getCount('CSPDirective', $c);
+        $c->limit($limit, $start);
+        $directives = $this->modx->getIterator('CSPDirective', $c);
+        $directivesFormat = [];
+        foreach ($directives as $directive) {
+            $lexicon = $this->modx->lexicon('cspect.directive.' . $directive->get('name'));
+            $directivesFormat[] = [
+                'value' => $directive->get('id'),
+                'text' => $lexicon ?: $directive->get('name'),
+            ];
+        }
         return $this->outputArray(array_values($directivesFormat), $total);
     }
 }

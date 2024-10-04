@@ -1,6 +1,6 @@
 {
   "name": "CSPect",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "lowCaseName": "cspect",
   "description": "CSP management tool for MODX",
   "author": "matdave",
@@ -10,6 +10,44 @@
           "text": "cspect.menu",
           "description": "cspect.menu_desc",
           "action": "manage"
+      }
+    ],
+    "elements": {
+      "plugins": [
+        {
+          "name": "CSPect",
+          "file": "CSPect.php",
+          "events": [
+            "OnWebPagePrerender"
+          ]
+        }
+      ]
+    },
+    "systemSettings": [
+      {
+        "key": "report_only",
+        "xtype": "combo-boolean",
+        "value": "0"
+      },
+      {
+        "key": "report_uri",
+        "xtype": "textfield",
+        "value": "{{cspect.assets_url}}/report.php"
+      },
+      {
+        "key": "report_to",
+        "xtype": "textfield",
+        "value": "cspect"
+      },
+      {
+        "key": "reporting_endpoints",
+        "xtype": "textfield",
+        "value": "cspect=\"{{cspect.assets_url}}/report.php\""
+      },
+      {
+        "key": "default_contexts",
+        "xtype": "textfield",
+        "value": "web"
       }
     ]
   },

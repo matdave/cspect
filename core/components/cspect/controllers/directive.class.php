@@ -26,6 +26,10 @@ class CSPectDirectiveManagerController extends CSPectBaseManagerController
             $this->modx->sendRedirect($this->modx->getOption('manager_url') . '?a=manage&namespace=cspect');
         }
 
+        if ($this->version < 3) {
+            $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/utils/breadcrumbs.js');
+        }
+
         $this->addHtml(
             '
             <script type="text/javascript">

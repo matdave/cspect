@@ -21,6 +21,8 @@ $_lang['cspect.global.change_order'] = 'Change Order';
 $_lang['cspect.global.remove'] = 'Remove';
 $_lang['cspect.global.remove_confirm'] = 'Are you sure you want to remove this item?';
 $_lang['cspect.global.url'] = 'URL';
+$_lang['cspect.global.search'] = 'Search';
+$_lang['cspect.global.clear'] = 'Clear';
 
 $_lang['cspect.combo.empty.directive'] = 'Select a Directive';
 $_lang['cspect.combo.empty.source'] = 'Select a Source';

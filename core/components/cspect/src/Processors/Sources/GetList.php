@@ -23,4 +23,8 @@ class GetList extends GetListProcessor
         'group' => '`CSPSource`.`id`',
     ];
 
+    public $dynamicFilter = [
+        'query' => 'name:LIKE',
+    ];
+
 }

@@ -43,6 +43,31 @@ cspect.grid.Source = function (config) {
             {
                 text: _('cspect.source_create'),
                 handler: this.createSource
+            }, '->', {
+                xtype: 'textfield',
+                name: 'search',
+                id: 'cspect-source-search-filter',
+                emptyText: _('cspect.global.search'),
+                listeners: {
+                    'change': {fn: this.search, scope: this, buffer: 500},
+                    'render': {
+                        fn: function (cmp) {
+                            new Ext.KeyMap(cmp.getEl(), {
+                                key: Ext.EventObject.ENTER,
+                                fn: function () {
+                                    this.blur();
+                                    return true;
+                                },
+                                scope: cmp
+                            });
+                        },
+                        scope: this
+                    }
+                },
+            },{
+                xtype: 'button',
+                text: _('cspect.global.clear'),
+                handler: this.clear,
             }
         ],
         autosave: true,
@@ -169,6 +194,15 @@ Ext.extend(cspect.grid.Source, MODx.grid.Grid, {
         return _("cspect.global.change_order", {
             child: this.selModel.selections.items[0].data.game_name,
         });
+    },
+    search: function (tf, nv, ov) {
+        this.getStore().baseParams.query = nv;
+        this.getBottomToolbar().changePage(1);
+    },
+    clear: function () {
+        Ext.getCmp('cspect-source-search-filter').reset();
+        this.getStore().baseParams.query = '';
+        this.getBottomToolbar().changePage(1);
     },
 });
 Ext.reg('cspect-grid-source', cspect.grid.Source);

@@ -19,4 +19,8 @@ class GetList extends modObjectGetListProcessor
         'column' => '`Directives`.`source`',
         'group' => '`CSPSource`.`id`',
     ];
+
+    public $dynamicFilter = [
+        'query' => 'name:LIKE',
+    ];
 }

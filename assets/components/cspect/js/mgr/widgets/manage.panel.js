@@ -64,6 +64,16 @@ cspect.panel.Manage = function (config) {
                                 preventRender: true
                             }
                         ]
+                    },
+                    {
+                        title: _('cspect.manage.context'),
+                        layout: 'form',
+                        items: [
+                            {
+                                xtype: 'cspect-panel-context-vtabs',
+                                preventRender: false
+                            }
+                        ]
                     }
                 ]
             }

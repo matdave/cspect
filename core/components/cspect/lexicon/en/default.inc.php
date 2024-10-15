@@ -10,6 +10,8 @@ $_lang['cspect.manage.source'] = 'Sources';
 $_lang['cspect.manage.source_desc'] = 'Manage your CSP sources';
 $_lang['cspect.manage.violation'] = 'Reports';
 $_lang['cspect.manage.violation_desc'] = 'Review CSP violation reports';
+$_lang['cspect.manage.context'] = 'Contexts';
+$_lang['cspect.manage.context_desc'] = 'Manage your context specific CSP settings';
 
 $_lang['cspect.global.name'] = 'Name';
 $_lang['cspect.global.created_on'] = 'Created On';
@@ -26,6 +28,11 @@ $_lang['cspect.global.clear'] = 'Clear';
 
 $_lang['cspect.combo.empty.directive'] = 'Select a Directive';
 $_lang['cspect.combo.empty.source'] = 'Select a Source';
+
+$_lang['cspect.context'] = 'Context';
+$_lang['cspect.context.global'] = 'System';
+$_lang['cspect.context.global_desc'] = 'Default settings for all contexts. Click on a context tab to override it\'s specific settings.';
+$_lang['cspect.context.inherited'] = 'Inherited from Global';
 
 $_lang['cspect.directive'] = 'Directive';
 $_lang['cspect.directive_create'] = 'Create Directive';

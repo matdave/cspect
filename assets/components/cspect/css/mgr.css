@@ -9,3 +9,7 @@
     text-align: left;
     vertical-align: top;
 }
+.cspect-panel-context .modx-formpanel-footer {
+    padding: 15px 20px 15px 15px;
+    border-top: 1px solid #FAFAFA;
+}

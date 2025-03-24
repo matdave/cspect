@@ -18,23 +18,23 @@ systemSettings:
     -
         key: report_only
         value: 0
-        xtype: combo-boolean
+        type: combo-boolean
     -
         key: report_uri
         value: '{{cspect.assets_url}}/report.php'
-        xtype: textfield
+        type: textfield
     -
         key: report_to
         value: 'cspect'
-        xtype: textfield
+        type: textfield
     -
         key: reporting_endpoints
         value: 'cspect="{{cspect.assets_url}}/report.php"'
-        xtype: textfield
+        type: textfield
     -
         key: default_contexts
         value: 'web'
-        xtype: textfield
+        type: textfield
 database:
     tables:
         - CSPect\Model\CSPDirective

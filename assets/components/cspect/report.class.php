@@ -7,7 +7,7 @@ class Report
 
     private string $table_prefix = 'modx_';
 
-    private string $defaultContext = 'web';
+    private array $defaultContexts = ['web'];
 
     public function __construct($pdo, $data, $table_prefix)
     {
@@ -26,7 +26,7 @@ class Report
 
     public function run(): array
     {
-        $this->defaultContext = $this->getDefaultContext();
+        $this->defaultContexts = $this->getDefaultContext();
         if (!empty($this->data[0]) && is_array($this->data[0])) {
             foreach ($this->data as $report) {
                 $this->saveReport($report);
@@ -39,9 +39,10 @@ class Report
 
     private function getDefaultContext()
     {
-        $stmt = $this->pdo->prepare("SELECT `value` FROM {$this->table_prefix}system_settings WHERE `key` = 'default_context'");
+        $stmt = $this->pdo->prepare("SELECT `value` FROM {$this->table_prefix}system_settings WHERE `key` = 'cspect.default_contexts'");
         $stmt->execute();
-        return $stmt->fetchColumn();
+        $result = $stmt->fetchColumn();
+        return explode(',', $result);
     }
 
     private function saveReport($report): bool
@@ -50,29 +51,32 @@ class Report
             return $this->legacyReport($report);
         }
         $parsedUrl = parse_url($report['url']);
-        $context = $this->getContext($parsedUrl['host'] ?? '');
+        $contexts = $this->getContext($parsedUrl['host'] ?? '');
         $userAgent = $this->getUserAgent($report);
-        return $this->save([
-            'context_key' => $context,
-            'age' => $report['age'] ?? 0,
-            'type' => $report['type'] ?? '',
-            'url' => $report['url'] ?? '',
-            'user_agent' => $userAgent,
-            'directive' => $report['body']['effectiveDirective'] ?? $report['body']['effective-directive'] ?? 'unknown',
-            'blocked' => $report['body']['blockedURL'] ??
-                    $report['body']['blocked-url'] ??
-                    $report['body']['blockedURI'] ??
-                    $report['body']['blocked-uri'] ??
-                    '',
-            'body' => json_encode($report['body']) ?? '',
-        ]);
+        foreach ($contexts as $context) {
+            $this->save([
+                'context_key' => $context,
+                'age' => $report['age'] ?? 0,
+                'type' => $report['type'] ?? '',
+                'url' => $report['url'] ?? '',
+                'user_agent' => $userAgent,
+                'directive' => $report['body']['effectiveDirective'] ?? $report['body']['effective-directive'] ?? 'unknown',
+                'blocked' => $report['body']['blockedURL'] ??
+                        $report['body']['blocked-url'] ??
+                        $report['body']['blockedURI'] ??
+                        $report['body']['blocked-uri'] ??
+                        '',
+                'body' => json_encode($report['body']) ?? '',
+            ]);
+        }
+        return true;
     }
 
     private function legacyReport($report): bool
     {
         if (empty($report['csp-report'])) {
             return $this->save([
-                'context_key' => $this->defaultContext,
+                'context_key' => $this->defaultContexts[0],
                 'age' => 0,
                 'type' => 'unknown',
                 'url' => '',
@@ -83,7 +87,7 @@ class Report
             ]);
         } else {
             return $this->save([
-                'context_key' => $this->defaultContext,
+                'context_key' => $this->defaultContexts[0],
                 'age' => 0,
                 'type' => 'csp-violation',
                 'url' => $report['csp-report']['document-uri'] ?? '',
@@ -98,15 +102,19 @@ class Report
     private function getContext($domain)
     {
         if (empty($domain)) {
-            return $this->defaultContext;
+            return $this->defaultContexts;
         }
-        $stmt = $this->pdo->prepare("SELECT context_key FROM {$this->table_prefix}context_setting WHERE `value` LIKE :domain AND `key` = 'site_url'");
+        $stmt = $this->pdo->prepare("SELECT context_key FROM {$this->table_prefix}context_setting WHERE `value` LIKE :domain AND `key` = 'site_url' AND `context_key` != 'mgr'");
         $stmt->execute(['domain' => "%$domain%"]);
-        $context = $stmt->fetchColumn();
-        if (empty($context)) {
-            return $this->defaultContext;
+        $contexts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (empty($contexts)) {
+            return $this->defaultContexts;
         }
-        return $context;
+        $results = [];
+        foreach ($contexts as $row) {
+            $results = $row['context_key'];
+        }
+        return $results;
     }
 
     private function getUserAgent($report = []): string

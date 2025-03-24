@@ -26,27 +26,27 @@
     "systemSettings": [
       {
         "key": "report_only",
-        "xtype": "combo-boolean",
+        "type": "combo-boolean",
         "value": "0"
       },
       {
         "key": "report_uri",
-        "xtype": "textfield",
+        "type": "textfield",
         "value": "{{cspect.assets_url}}/report.php"
       },
       {
         "key": "report_to",
-        "xtype": "textfield",
+        "type": "textfield",
         "value": "cspect"
       },
       {
         "key": "reporting_endpoints",
-        "xtype": "textfield",
+        "type": "textfield",
         "value": "cspect=\"{{cspect.assets_url}}/report.php\""
       },
       {
         "key": "default_contexts",
-        "xtype": "textfield",
+        "type": "textfield",
         "value": "web"
       }
     ]

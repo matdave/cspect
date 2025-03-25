@@ -124,13 +124,13 @@ $_lang['cspect.violation.auto_fix_unavailable'] = 'Auto Fix Unavailable';
 
 $_lang['cspect.err.bad_sort_column'] = 'Bad Sort Column!';
 
-$_lang['settings_cspect.report_only'] = 'Report Only';
-$_lang['settings_cspect.report_only_desc'] = 'Enable report only mode for CSP headers.';
-$_lang['settings_cspect.report_uri'] = 'Report URI';
-$_lang['settings_cspect.report_uri_desc'] = 'A fallback URI to use for reporting CSP violations on browsers that don\'t support the report-to interface. e.g. https://example.com/csp-reports';
-$_lang['settings_cspect.report_to'] = 'Report To';
-$_lang['settings_cspect.report_to_desc'] = 'A directive to specify that a particular defined endpoint should be used for reporting. e.g. csp-endpoint';
-$_lang['settings_cspect.reporting_endpoints'] = 'Reporting Endpoints';
-$_lang['settings_cspect.reporting_endpoints_desc'] = 'This setting defines one or more endpoint URLs as a comma-separated list. e.g. csp-endpoint="https://example.com/csp-reports"';
-$_lang['settings_cspect.default_contexts'] = 'Default Contexts';
-$_lang['settings_cspect.default_contexts_desc'] = 'This setting defines one or more default contexts as a comma-separated list to automatically assign a source to when created.';
+$_lang['setting_cspect.report_only'] = 'Report Only';
+$_lang['setting_cspect.report_only_desc'] = 'Enable report only mode for CSP headers.';
+$_lang['setting_cspect.report_uri'] = 'Report URI';
+$_lang['setting_cspect.report_uri_desc'] = 'A fallback URI to use for reporting CSP violations on browsers that don\'t support the report-to interface. e.g. https://example.com/csp-reports';
+$_lang['setting_cspect.report_to'] = 'Report To';
+$_lang['setting_cspect.report_to_desc'] = 'A directive to specify that a particular defined endpoint should be used for reporting. e.g. csp-endpoint';
+$_lang['setting_cspect.reporting_endpoints'] = 'Reporting Endpoints';
+$_lang['setting_cspect.reporting_endpoints_desc'] = 'This setting defines one or more endpoint URLs as a comma-separated list. e.g. csp-endpoint="https://example.com/csp-reports"';
+$_lang['setting_cspect.default_contexts'] = 'Default Contexts';
+$_lang['setting_cspect.default_contexts_desc'] = 'This setting defines one or more default contexts as a comma-separated list to automatically assign a source to when created.';

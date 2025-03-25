@@ -24,7 +24,7 @@ cspect.window.ContextExport = function (config) {
                 autoScroll: true,
             },
             {
-                fieldLabel: _('settings_cspect.reporting_endpoints'),
+                fieldLabel: _('setting_cspect.reporting_endpoints'),
                 xtype: "displayfield",
                 html: config.endpoints,
                 autoScroll: true,

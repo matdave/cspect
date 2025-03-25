@@ -26,22 +26,22 @@ cspect.panel.Context = function (config) {
             },
             {
                 xtype: 'combo-boolean',
-                fieldLabel: _('settings_cspect.report_only'),
+                fieldLabel: _('setting_cspect.report_only'),
                 name: 'report_only',
             },
             {
                 xtype: 'textfield',
-                fieldLabel: _('settings_cspect.report_uri'),
+                fieldLabel: _('setting_cspect.report_uri'),
                 name: 'report_uri',
             },
             {
                 xtype: 'textfield',
-                fieldLabel: _('settings_cspect.report_to'),
+                fieldLabel: _('setting_cspect.report_to'),
                 name: 'report_to',
             },
             {
                 xtype: 'textarea',
-                fieldLabel: _('settings_cspect.reporting_endpoints'),
+                fieldLabel: _('setting_cspect.reporting_endpoints'),
                 name: 'reporting_endpoints',
             }
         ],

@@ -3,15 +3,31 @@ cspect.window.ContextExport = function (config) {
     config.exportData = config.exportData || '';
     Ext.applyIf(config, {
         title: _('cspect.context.export'),
-        cls: 'cspect-window-context-export',
-        width: 400,
+        width: 800,
         autoHeight: true,
         modal: true,
-        layout: 'anchor',
+        maximizable: true,
+        shadow: true,
+        layout: 'form',
+        cls: 'modx-window',
+        anchor: '100% 100%',
+        labelAlign: 'top',
+        defaults: {
+            hideLabel: false,
+            anchor: '100%',
+        },
         items: [
             {
+                fieldLabel: _('cspect.global.csp'),
                 xtype: "displayfield",
-                value: config.exportData
+                html: config.exportData,
+                autoScroll: true,
+            },
+            {
+                fieldLabel: _('settings_cspect.reporting_endpoints'),
+                xtype: "displayfield",
+                html: config.endpoints,
+                autoScroll: true,
             }
         ]
     });

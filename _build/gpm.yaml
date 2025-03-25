@@ -17,7 +17,7 @@ plugins:
 systemSettings:
     -
         key: report_only
-        value: 0
+        value: '1'
         type: combo-boolean
     -
         key: report_uri

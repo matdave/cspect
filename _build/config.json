@@ -27,7 +27,7 @@
       {
         "key": "report_only",
         "type": "combo-boolean",
-        "value": "0"
+        "value": "1"
       },
       {
         "key": "report_uri",

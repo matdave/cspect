@@ -14,14 +14,7 @@ cspect.panel.Context = function (config) {
         defaults: {
             anchor: '100%',
         },
-        buttons: [
-            {
-                text: _('save'),
-                cls: 'primary-button',
-                handler: this.submit,
-                scope: this
-            }
-        ],
+        buttons: this.getButtons(config),
         items: [
             {
                 html: '<h3>' + config.title + '</h3>'
@@ -61,6 +54,23 @@ cspect.panel.Context = function (config) {
     cspect.panel.Context.superclass.constructor.call(this, config);
 }
 Ext.extend(cspect.panel.Context, MODx.FormPanel, {
+    getButtons: function (config) {
+        var b = [];
+        b.push({
+            text: _('save'),
+            cls: 'primary-button',
+            handler: this.submit,
+            scope: this
+        });
+        if (config.key !== 'mgr') {
+            b.push({
+                text: _('export'),
+                handler: this.exportCSP,
+                scope: this
+            });
+        }
+        return b;
+    },
     getItems: async function (panel) {
         var record = {
             report_only: MODx.config['cspect.report_only'],
@@ -105,6 +115,36 @@ Ext.extend(cspect.panel.Context, MODx.FormPanel, {
                         }
                     },
                     scope: this
+                }
+            }
+        });
+    },
+    exportCSP: function () {
+        MODx.Ajax.request({
+            url: cspect.config.connectorUrl,
+            params: {
+                action: 'CSPect\\Processors\\Contexts\\Export',
+                context_key: this.config.key
+            },
+            listeners: {
+                success: {
+                    fn: function (response) {
+                        if (response.success) {
+                            var win = MODx.load({
+                                xtype: 'cspect-window-context-export',
+                                exportData: response.results.exportData,
+                                endpoints: response.results.endpoints,
+                                listeners: {
+                                    'success': {
+                                        fn: function () {
+                                            // success
+                                        }, scope: this
+                                    }
+                                }
+                            });
+                            win.show();
+                        }
+                    }
                 }
             }
         });

@@ -17,6 +17,7 @@ class CSPectManageManagerController extends CSPectBaseManagerController
     {
         $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/context/vtabs.js');
         $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/context/panel.js');
+        $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/context/window.js');
         $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/directive/grid.js');
         $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/directive/window.js');
         $this->addLastJavascript($this->cspect->getOption('jsUrl') . 'mgr/widgets/source/grid.js');

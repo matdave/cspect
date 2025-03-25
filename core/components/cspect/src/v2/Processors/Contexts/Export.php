@@ -1,27 +1,34 @@
 <?php
 
-namespace CSPect\Events;
+namespace CSPect\v2\Processors\Contexts;
 
-use CSPect\Model\CSPDirective;
-use CSPect\Model\CSPSource;
-use CSPect\Model\CSPSourceContext;
-use CSPect\Model\CSPSourceDirective;
-use MatDave\MODXPackage\Elements\Event\Event;
 
-class OnWebPagePrerender extends Event
+class Export extends \modProcessor
 {
     private $sources = [];
     private string $context;
-
-    public function run()
+    public function process()
     {
-        $this->context = $this->modx->context->get('key');
-        if (empty($this->context) || $this->context === 'mgr') {
-            return;
+        $this->context = $this->getProperty('context_key');
+        if (empty($this->context)) {
+            return $this->failure('Invalid key');
         }
-
+        if ($this->context === 'mgr') {
+            return $this->outputArray([]);
+        }
+        $context = $this->modx->getObject('modContext', ['key' => $this->context]);
+        if (empty($context)) {
+            return $this->failure('Context not found');
+        }
+        $csp = $this->buildCSP();
+        return $this->outputArray($csp);
+    }
+    
+    public function buildCSP(): array
+    {
         $this->gatherSources();
-        $this->addHeaders();
+
+        return $this->getHeaders();
     }
 
     protected function gatherSources(): void
@@ -31,14 +38,14 @@ class OnWebPagePrerender extends Event
             $this->sources = $cache;
             return;
         }
-        $c = $this->modx->newQuery(CSPSource::class);
-        $c->leftJoin(CSPSourceContext::class, 'Contexts', 'CSPSource.id = Contexts.source');
+        $c = $this->modx->newQuery('CSPSource');
+        $c->leftJoin('CSPSourceContext', 'Contexts', 'CSPSource.id = Contexts.source');
         $c->where([
             'Contexts.context_key' => $this->context,
         ]);
         $c->sortby('CSPSource.rank', 'ASC');
-        $c->select($this->modx->getSelectColumns(CSPSource::class, 'CSPSource'));
-        $collection = $this->modx->getIterator(CSPSource::class, $c);
+        $c->select($this->modx->getSelectColumns('CSPSource', 'CSPSource'));
+        $collection = $this->modx->getIterator('CSPSource', $c);
         foreach($collection as $source)
         {
             $this->sources[] = $source->toArray();
@@ -46,19 +53,24 @@ class OnWebPagePrerender extends Event
         $this->modx->cacheManager->set('cspect-sources-'.$this->context, $this->sources);
     }
 
-    protected function addHeaders(): void
+    protected function getHeaders(): array
     {
-        $header = 'Content-Security-Policy: ';
-        if ($this->modx->getOption('cspect.report_only', null, false)) {
-            $header = 'Content-Security-Policy-Report-Only: ';
-        }
+        $header = '';
+        $this->modx->switchContext($this->context);
 
         $this->addDirectives($header);
 
-        if ($header !== 'Content-Security-Policy: ') {
+        if ($header !== '') {
             $this->getReportUri($header);
-            header($header);
+            $reportingEndpoints = $this->modx->getOption('cspect.reporting_endpoints', null, '');
+            if (!empty($reportingEndpoints)) {
+                $reportingEndpoints = $this->parseValues($reportingEndpoints);
+            }
+            $this->modx->switchContext('mgr');
+            return ['exportData' => $header, 'endpoints' => $reportingEndpoints];
         }
+        $this->modx->switchContext('mgr');
+        return ['exportData' => '', 'endpoints' => ''];
     }
 
     protected function addDirectives(&$header): void
@@ -69,9 +81,9 @@ class OnWebPagePrerender extends Event
                 $this->addDirective($header, $directive);
             }
         } else {
-            $c = $this->modx->newQuery(CSPDirective::class);
+            $c = $this->modx->newQuery('CSPDirective');
             $c->sortby('rank', 'ASC');
-            $directives = $this->modx->getIterator(CSPDirective::class, $c);
+            $directives = $this->modx->getIterator('CSPDirective', $c);
             $directivesRaw = [];
             foreach ($directives as $directive) {
                 $directive = $directive->toArray();
@@ -86,7 +98,7 @@ class OnWebPagePrerender extends Event
     {
         $sources = [];
         foreach ($this->sources as $source) {
-            $check = $this->modx->getObject(CSPSourceDirective::class, [
+            $check = $this->modx->getObject('CSPSourceDirective', [
                 'source' => $source['id'],
                 'directive' => $directive['id'],
             ]);
@@ -118,11 +130,6 @@ class OnWebPagePrerender extends Event
         $reportUri = $this->modx->getOption('cspect.report_uri', null, '');
         if (!empty($reportUri)) {
             $header .= 'report-uri ' . $this->parseValues($reportUri) . '; ';
-        }
-
-        $reportingEndpoints = $this->modx->getOption('cspect.reporting_endpoints', null, '');
-        if (!empty($reportingEndpoints)) {
-            header('Reporting-Endpoints: ' . $this->parseValues($reportingEndpoints));
         }
 
         $reportTo = $this->modx->getOption('cspect.report_to', null, '');

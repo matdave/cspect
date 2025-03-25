@@ -25,6 +25,7 @@ $_lang['cspect.global.remove_confirm'] = 'Are you sure you want to remove this i
 $_lang['cspect.global.url'] = 'URL';
 $_lang['cspect.global.search'] = 'Search';
 $_lang['cspect.global.clear'] = 'Clear';
+$_lang['cspect.global.csp'] = 'Content Security Policy';
 
 $_lang['cspect.combo.empty.directive'] = 'Select a Directive';
 $_lang['cspect.combo.empty.source'] = 'Select a Source';
@@ -33,6 +34,7 @@ $_lang['cspect.context'] = 'Context';
 $_lang['cspect.context.global'] = 'System';
 $_lang['cspect.context.global_desc'] = 'Default settings for all contexts. Click on a context tab to override it\'s specific settings.';
 $_lang['cspect.context.inherited'] = 'Inherited from Global';
+$_lang['cspect.context.export'] = 'Export CSP';
 
 $_lang['cspect.directive'] = 'Directive';
 $_lang['cspect.directive_create'] = 'Create Directive';

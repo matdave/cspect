@@ -2,6 +2,8 @@
 
 CSPect is a tool to manage and maintain your MODX site's Content Security Policies.
 
+## Getting Started
+
 ### What is a CSP
 
 A CSP, or Content Security Policy, is a security feature implemented by web browsers to  control resource

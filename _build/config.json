@@ -1,6 +1,6 @@
 {
   "name": "CSPect",
-  "version": "0.0.2",
+  "version": "0.0.3-beta",
   "lowCaseName": "cspect",
   "description": "CSP management tool for MODX",
   "author": "matdave",

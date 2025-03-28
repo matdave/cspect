@@ -7,4 +7,10 @@
                  start-page="index.md">
 
     <toc-element topic="index.md"/>
+    <toc-element toc-title="Usage">
+        <toc-element topic="Directives.md"/>
+        <toc-element topic="Sources.md"/>
+        <toc-element topic="Reports.md"/>
+        <toc-element topic="Contexts.md"/>
+    </toc-element>
 </instance-profile>

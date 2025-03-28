@@ -2,87 +2,52 @@
 
 CSPect is a tool to manage and maintain your MODX site's Content Security Policies.
 
-## Getting Started
+### What is a CSP
 
-Install the package from your MODX package manager. On first install, CSPect will set up a basic list of sources and
-directives for your.
+A CSP, or Content Security Policy, is a security feature implemented by web browsers to  control resource
+requests made by a browser on your site. 
+
+A CSP consists of two primary parts, the Directives and the Sources (or values) allowed within those directives.
+
+#### Directives
+
+Directives are a definition of the _type_ of request made by the browser from the site. For example, an iFrame
+on your site will follow the "frame-src" directive if one exists, or fallback to the "default-src" directive.
+
+#### Sources
+
+Sources are a definition of the allowed values within a directive. Using the iFrame example again, if you define that
+your "frame-src" directive only allows frames with the source "example.com" then the browser will block any requests
+on your site for iFrames with the src "elpmaxe.com".
+
+### How does CSPect Work
+
+CSPect starts out by adding a basic list of directives available from [MDN fetch directives](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy#directives)
+
+With these directives you are able to add allowed sources per context. If something on your site fails the CSP
+the browser will block the request and send a new report to the built-in reporting endpoint.
+
+You can use the built-in reporting endpoint to automatically add new entries to your CSP.
 
 ## Usage
 
 ### Managing Directives
 
-CSPect starts out by adding a basic list of directives available from [MDN fetch directives](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy#directives)
-
-To add additional directives, go to the "Directives" tab of the CSPect Custom Manager Page, and select "Create Directive"
-
-This will open a popup window allowing you to select a new directive from a list of valid directives: 
-
-![Create Directives Window](create_directive.png)
-
-To edit an existing directive, right-click on the directive in the grid and select "Update Directive"
-
-![Update Directive Action](update_directive.png)
-
-This will take you to the Directive Management page, where you can assign sources.
+Lean how to [manage directives here.](Directives.md)
 
 ### Managing Sources
 
-CSPect starts out with a very basic list of sources, including 'self', 'unsafe-inline', 'unsafe-eval', 'data:', and 'blob:'
-
-To add additional sources, go to the "Sources" tab of the CSPect Custom Manager Page, and select "Create Source"
-
-![Create Source Window](create_source.png)
-
-To edit an existing source, right-click on the source in the grid and select "Update Source"
-
-![Update Source Action](update_source.png)
-
-This will take you into the Source Management page. Here you can add/remove directives from a source, or assign contexts
-to a source. 
-
-![Manage Source Page](manage_source.png)
+Lean how to [manage sources here.](Sources.md)
 
 ### Managing Reports
 
-If you are using the built-in CSP reporting tool, you may receive occasional reports about violations to your CSP. These
-are shown in the "Reports" tab of the CSPect Custom Manager Page.
-
-![Reports Grid](reports.png)
-
-To clear reports, you can click the "Clear Reports" button at the top of the grid.
-
-To review a report, right-click and select "View Report".
-
-![View Report](view_report.png)
-
-The view report window will give you detailed information about the cause of a report. From here you can either ignore
-the report, or click the "Auto Fix" button if you would like to generate an exception.
-
-The "Auto Fix" button should remove any related reports.
-
+Lean how to [manage reports here.](Reports.md)
 
 ### Managing Contexts
 
-Each context of your site can be configured differently. You can view how contexts are configured in the "Contexts" tab
-of the CSPect Custom Manager page. 
+Lean how to [manage contexts here.](Contexts.md)
 
-![Contexts Tab](contexts.png)
-
-The first tab will be the System Wide defaults. These settings are: 
-
-**Report Only** - Enables report only mode for CSP headers. _(default `Yes`)_ 
-
-**Report URI** - A fallback URI to use for reporting CSP violations on browsers that don't support the report-to interface. e.g. https://example.com/csp-reports _(default `{{cspect.assets_url}}/report.php`)_
-
-**Report To** - A directive to specify that a particular defined endpoint should be used for reporting. e.g. csp-endpoint _(default `cspect`)_
-
-**Reporting Endpoints** - This setting defines one or more endpoint URLs as a comma-separated list. e.g. csp-endpoint="https://example.com/csp-reports" _(default `cspect="{{cspect.assets_url}}/report.php"`)_
-
-For some use cases, you may want to assign your CSP manually using your server. If this is the case, you can click within 
-one of the contexts and select "Export" to get the current CSP record for that context. If managing your CSP externally,
-we recommend setting your context to "Report Only" or disabling the CSPect Plugin. 
-
-### Additional Settings
+### Additional System Settings
 
 CSPect has an additional system setting for assigning default contexts. This is useful if you have multiple contexts that 
 are similarly coded. The `cspect.default_contexts` setting is a comma-separated list of context names to assign as default

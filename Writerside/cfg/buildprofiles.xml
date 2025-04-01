@@ -7,7 +7,16 @@
     <build-profile instance="c">
         <variables>
             <noindex-content>false</noindex-content>
+            <offline-docs>true</offline-docs>
+            <primary-color>metallic</primary-color>
+            <color-preset>vivid</color-preset>
+            <product-web-url>https://github.com/matdave/cspect</product-web-url>
+            <download-page>https://extras.modx.com/package/cspect</download-page>
+            <showDownloadButton>true</showDownloadButton>
         </variables>
+        <footer>
+            <social type="github" href="https://github.com/matdave/cspect"/>
+        </footer>
     </build-profile>
 
 </buildprofiles>

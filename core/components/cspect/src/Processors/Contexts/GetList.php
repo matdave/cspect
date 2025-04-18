@@ -15,6 +15,5 @@ class GetList extends GetListProcessor
     public $languageTopics = ['cspect:default'];
     public $defaultSortField = 'rank';
     public $defaultSortDirection = 'ASC';
-
-    public $dynamicFilter = ['key' => 'key'];
+    public $dynamicFilter = ['ignore_key' => 'key:!='];
 }

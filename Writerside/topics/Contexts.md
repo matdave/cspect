@@ -15,6 +15,14 @@ The first tab will be the System Wide defaults. These settings are:
 
 **Reporting Endpoints** - This setting defines one or more endpoint URLs as a comma-separated list. e.g. csp-endpoint="https://example.com/csp-reports" _(default `cspect="{{cspect.assets_url}}/report.php"`)_
 
+## Export CSP Record
 For some use cases, you may want to assign your CSP manually using your server. If this is the case, you can click within
 one of the contexts and select "Export" to get the current CSP record for that context. If managing your CSP externally,
 we recommend setting your context to "Report Only" or disabling the CSPect Plugin. 
+
+## Import CSP Record
+If you are importing a CSP record from another source, you can click within one of the contexts and select "Import". This will open up a modal window where you can paste the value of your CSP record.
+
+![import_csp.png](import_csp.png)
+
+Combining Export/Import you can duplicate a CSP record across multiple contexts.

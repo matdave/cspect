@@ -68,6 +68,11 @@ Ext.extend(cspect.panel.Context, MODx.FormPanel, {
                 handler: this.exportCSP,
                 scope: this
             });
+            b.push({
+                text: _('import'),
+                handler: this.importCSP,
+                scope: this
+            });
         }
         return b;
     },
@@ -148,6 +153,21 @@ Ext.extend(cspect.panel.Context, MODx.FormPanel, {
                 }
             }
         });
+    },
+    importCSP: function () {
+        var win = MODx.load({
+            xtype: 'cspect-window-context-import',
+            context_key: this.config.key,
+            listeners: {
+                'success': {
+                    fn: function () {
+                        // success
+                    }, scope: this
+                }
+            }
+        });
+        win.fp.getForm().reset();
+        win.show();
     },
 });
 

@@ -35,6 +35,8 @@ $_lang['cspect.context.global'] = 'System';
 $_lang['cspect.context.global_desc'] = 'Default settings for all contexts. Click on a context tab to override it\'s specific settings.';
 $_lang['cspect.context.inherited'] = 'Inherited from Global';
 $_lang['cspect.context.export'] = 'Export CSP';
+$_lang['cspect.context.import'] = 'Import CSP';
+$_lang['cspect.context.import.csp'] = 'CSP Record Value';
 
 $_lang['cspect.directive'] = 'Directive';
 $_lang['cspect.directive_create'] = 'Create Directive';
@@ -75,6 +77,7 @@ $_lang['cspect.directive.style-src-elem'] = 'Style Source Element';
 $_lang['cspect.directive_desc.style-src-elem'] = 'Specifies which URLs can be loaded as a stylesheet for inline style elements.';
 
 $_lang['cspect.source'] = 'Source';
+$_lang['cspect.source_name'] = 'Source Name/URL';
 $_lang['cspect.source_create'] = 'Create Source';
 $_lang['cspect.source_update'] = 'Update Source';
 $_lang['cspect.source_remove'] = 'Remove Source';

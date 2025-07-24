@@ -1,5 +1,5 @@
 name: CSPect
-version: 1.0.0
+version: 1.0.1
 lowCaseName: cspect
 namespace: CSPect
 description: 'CSP management tool for MODX'

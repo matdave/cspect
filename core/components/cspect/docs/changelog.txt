@@ -1,3 +1,7 @@
+1.0.1-pl
+================
+- Add missing lexicon entries
+
 1.0.0-pl
 ================
 - Fix issues with 3.x context handling

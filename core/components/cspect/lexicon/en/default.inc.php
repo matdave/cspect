@@ -75,6 +75,16 @@ $_lang['cspect.directive.style-src-attr'] = 'Style Source Attribute';
 $_lang['cspect.directive_desc.style-src-attr'] = 'Specifies which URLs can be loaded as a stylesheet for inline style attributes.';
 $_lang['cspect.directive.style-src-elem'] = 'Style Source Element';
 $_lang['cspect.directive_desc.style-src-elem'] = 'Specifies which URLs can be loaded as a stylesheet for inline style elements.';
+$_lang['cspect.directive.worker-src'] = 'Worker Source';
+$_lang['cspect.directive_desc.worker-src'] = 'Specifies which URLs can be loaded as workers.';
+$_lang['cspect.directive.base-uri'] = 'Base URI';
+$_lang['cspect.directive_desc.base-uri'] = 'Specifies the base URI for all scripts in a page.';
+$_lang['cspect.directive.form-action'] = 'Form Action';
+$_lang['cspect.directive_desc.form-action'] = 'Specifies the URL that the form action attribute can use.';
+$_lang['cspect.directive.frame-ancestors'] = 'Frame Ancestors';
+$_lang['cspect.directive_desc.frame-ancestors'] = 'Specifies which URLs can be included in a frame, iframe, object, embed, or applet element\'s src attribute.';
+$_lang['cspect.directive.plugin-types'] = 'Plugin Types';
+$_lang['cspect.directive_desc.plugin-types'] = 'Specifies which plugin types can be loaded.';
 
 $_lang['cspect.source'] = 'Source';
 $_lang['cspect.source_name'] = 'Source Name/URL';

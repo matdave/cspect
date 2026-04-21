@@ -133,7 +133,7 @@ class Import extends \modProcessor
         return 'Updated directive ' . $directive . ' with sources: ' . implode(', ', $entries);
     }
 
-    private function handleDirectiveSource(CSPDirective $directive, string $source): string
+    private function handleDirectiveSource($directive, string $source): string
     {
         $source = trim($source);
         $source = trim($source, "'");

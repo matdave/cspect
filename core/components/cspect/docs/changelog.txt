@@ -1,3 +1,7 @@
+1.1.1-pl
+================
+- Fix broken class map on 2.x
+
 1.1.0-pl
 ================
 - Fix import processor for 2.x

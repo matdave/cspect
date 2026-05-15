@@ -19,6 +19,8 @@ $xpdo_meta_map['CSPViolation']= array (
     'user_agent' => NULL,
     'body' => NULL,
     'created_on' => 'CURRENT_TIMESTAMP',
+    'directive' => '',
+    'blocked' => NULL,
   ),
   'fieldMeta' => 
   array (
@@ -71,6 +73,20 @@ $xpdo_meta_map['CSPViolation']= array (
       'null' => false,
       'default' => 'CURRENT_TIMESTAMP',
     ),
+    'directive' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '100',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'blocked' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => true,
+    ),
   ),
   'indexes' => 
   array (
@@ -122,6 +138,22 @@ $xpdo_meta_map['CSPViolation']= array (
         ),
       ),
     ),
+    'directive' => 
+    array (
+      'alias' => 'directive',
+      'primary' => false,
+      'unique' => false,
+      'type' => 'BTREE',
+      'columns' => 
+      array (
+        'directive' => 
+        array (
+          'length' => '',
+          'collation' => 'A',
+          'null' => false,
+        ),
+      ),
+    ),
     'created_on' => 
     array (
       'alias' => 'created_on',
@@ -139,7 +171,7 @@ $xpdo_meta_map['CSPViolation']= array (
       ),
     ),
   ),
-  'composites' => 
+  'aggregates' => 
   array (
     'Context' => 
     array (

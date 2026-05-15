@@ -12,12 +12,12 @@ $xpdo_meta_map['CSPSourceContext']= array (
   ),
   'fields' => 
   array (
-    'host' => 0,
+    'source' => 0,
     'context_key' => '',
   ),
   'fieldMeta' => 
   array (
-    'host' => 
+    'source' => 
     array (
       'dbtype' => 'int',
       'precision' => '10',
@@ -36,15 +36,15 @@ $xpdo_meta_map['CSPSourceContext']= array (
   ),
   'indexes' => 
   array (
-    'host' => 
+    'source' => 
     array (
-      'alias' => 'host',
+      'alias' => 'source',
       'primary' => false,
       'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
-        'host' => 
+        'source' => 
         array (
           'length' => '',
           'collation' => 'A',
@@ -69,12 +69,12 @@ $xpdo_meta_map['CSPSourceContext']= array (
       ),
     ),
   ),
-  'composites' => 
+  'aggregates' => 
   array (
-    'Host' => 
+    'Source' => 
     array (
       'class' => 'CSPSource',
-      'local' => 'host',
+      'local' => 'source',
       'foreign' => 'id',
       'cardinality' => 'one',
       'owner' => 'foreign',

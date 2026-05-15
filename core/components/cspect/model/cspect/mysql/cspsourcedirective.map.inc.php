@@ -12,13 +12,13 @@ $xpdo_meta_map['CSPSourceDirective']= array (
   ),
   'fields' => 
   array (
-    'host' => 0,
     'source' => 0,
+    'directive' => 0,
     'value' => NULL,
   ),
   'fieldMeta' => 
   array (
-    'host' => 
+    'source' => 
     array (
       'dbtype' => 'int',
       'precision' => '10',
@@ -26,7 +26,7 @@ $xpdo_meta_map['CSPSourceDirective']= array (
       'null' => false,
       'default' => 0,
     ),
-    'source' => 
+    'directive' => 
     array (
       'dbtype' => 'int',
       'precision' => '10',
@@ -43,31 +43,15 @@ $xpdo_meta_map['CSPSourceDirective']= array (
   ),
   'indexes' => 
   array (
-    'host' => 
-    array (
-      'alias' => 'host',
-      'primary' => false,
-      'unique' => false,
-      'type' => 'BTREE',
-      'columns' => 
-      array (
-        'host' => 
-        array (
-          'length' => '',
-          'collation' => 'A',
-          'null' => false,
-        ),
-      ),
-    ),
     'source' => 
     array (
-      'alias' => 'source',
+      'alias' => 'directive',
       'primary' => false,
       'unique' => false,
       'type' => 'BTREE',
       'columns' => 
       array (
-        'source' => 
+        'directive' => 
         array (
           'length' => '',
           'collation' => 'A',
@@ -76,20 +60,20 @@ $xpdo_meta_map['CSPSourceDirective']= array (
       ),
     ),
   ),
-  'composites' => 
+  'aggregates' => 
   array (
-    'Host' => 
+    'Source' => 
     array (
       'class' => 'CSPSource',
-      'local' => 'host',
+      'local' => 'source',
       'foreign' => 'id',
       'cardinality' => 'one',
       'owner' => 'foreign',
     ),
-    'Source' => 
+    'Directive' => 
     array (
       'class' => 'CSPDirective',
-      'local' => 'source',
+      'local' => 'directive',
       'foreign' => 'id',
       'cardinality' => 'one',
       'owner' => 'foreign',

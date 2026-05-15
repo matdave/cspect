@@ -76,13 +76,13 @@ $xpdo_meta_map['CSPDirective']= array (
       ),
     ),
   ),
-  'aggregates' => 
+  'composites' => 
   array (
-    'Hosts' => 
+    'Sources' => 
     array (
       'class' => 'CSPSourceDirective',
       'local' => 'id',
-      'foreign' => 'source',
+      'foreign' => 'directive',
       'cardinality' => 'many',
       'owner' => 'local',
     ),
